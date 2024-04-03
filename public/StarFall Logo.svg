@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 652.85 531.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ededed;
+        stroke-miterlimit: 10;
+        stroke-width: 5.07px;
+      }
+
+      .cls-2 {
+        fill: #ccc;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: #ededed;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="v3_LOGO" data-name="v3 LOGO">
+      <g id="STAR_V2" data-name="STAR V2">
+        <polygon class="cls-3" points="385.94 133.9 324.63 175.63 263.31 133.9 324.63 0 385.94 133.9"/>
+        <polygon class="cls-2" points="324.54 175.63 385.85 133.9 385.85 133.9 324.54 0 324.54 0 324.54 175.63 324.54 175.63"/>
+      </g>
+      <text/>
+      <line class="cls-1" x1="325.62" y1="421.18" x2="101.27" y2="232.93"/>
+      <line class="cls-1" x1="325.98" y1="421.18" x2="550.58" y2="232.73"/>
+      <line class="cls-1" y1="420.9" x2="652.85" y2="420.9"/>
+    </g>
+  </g>
+</svg>
