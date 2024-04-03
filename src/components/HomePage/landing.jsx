@@ -22,8 +22,8 @@ function LandingPage() {
       
       <ImageFloater />
       <div className={`transition-opacity overflow-hidden duration-1000 sm:ml-0  flex flex-col sm:flex-wrap justify-center sm:items-center sm:justify-items-start h-screen prose prose-sm lg:prose-xl text-MainBeige relative`}>
-        {/* <Parallax speed={-15} > */}
-        <div data-scroll data-scroll-speed="4" data-scroll-delay="0.5" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
+        <Parallax speed={-15} >
+        <div data-scroll  data-scroll-speed="4" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
           <motion.video
             className="z-1 outline-none scale-[60%] border-none overflow-hidden object-cover hover:none"
             controls={false} autoPlay muted loop
@@ -32,10 +32,10 @@ function LandingPage() {
             type="video/mp4"
           />
         </div>
-        {/* </Parallax> */}
+        </Parallax>
       
         <div data-scroll data-scroll-speed="1.5" className='opacity-100 text-NightFall hidden sm:flex sm:absolute hover:text-LunarTwilight  duration-200 bottom-[10%] w-2/3 flex-col z-3 perspective-800'>
-        {/* <Parallax speed={10} > */}
+        <Parallax speed={10} >
           <motion.h1
             style={{ clipPath: 'circle(0% at 0% 0)' }}
             data-speed="6"
@@ -47,7 +47,7 @@ function LandingPage() {
           >
             <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span>
           </motion.h1>
-          {/* </Parallax> */}
+          </Parallax>
         </div>
       </div>
     </div>

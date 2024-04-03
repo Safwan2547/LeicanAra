@@ -16,6 +16,8 @@ import IdentitySection from './_components/identitySection';
 import EpilogueSection from './_components/epilogueSection';
 import MouseParallax from '../../components/mouseParallax';
 
+import Footer from '@/components/Footer';
+
 import {usePathname, useRouter,useSearchParams} from 'next/navigation';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
@@ -64,25 +66,6 @@ const ProjectPage = ({params}) => {
     }, []); // Dependency array
     
 
-    useEffect(() => {
-        if (contentLoaded) {
-        (async () => {
-            let locomotiveScroll;
-          const LocomotiveScroll = (await import('locomotive-scroll')).default;
-          if (locomotiveScroll) {
-            locomotiveScroll.destroy();
-          }
-           locomotiveScroll = new LocomotiveScroll({
-            el: containerRef2.current,
-            smooth: true,
-            lerp: 0.3,
-            // You can add other options here
-          });
-      
-          return () => locomotiveScroll.destroy(); // Clean-up function
-        })();}
-
-      }, [contentLoaded]); // Dependency array to ensure it runs only
       
     const searchParams=usePathname();
     const projectId= searchParams.substring(1); // Access the dynamic part of the URL
@@ -183,8 +166,8 @@ const ProjectPage = ({params}) => {
     
 
     return (
-        // <ParallaxProvider>
-        <div data-scroll-container ref={containerRef2} className=" pageWrap text-NightFall leading-relaxed  overflow-hidden bg-white">
+        <ParallaxProvider>
+        <div  ref={containerRef2} className=" pageWrap text-NightFall leading-relaxed  overflow-hidden bg-white">
             {
             projectData ? (
 
@@ -273,6 +256,7 @@ const ProjectPage = ({params}) => {
                     </div>
 
 
+
                 </>
             ) : (
                <div className='w-screen flex justify-center items-center h-screen'>
@@ -280,7 +264,7 @@ const ProjectPage = ({params}) => {
                  </div>
             )
         } </div>
-        // </ParallaxProvider>
+         </ParallaxProvider>
 
     );
 };

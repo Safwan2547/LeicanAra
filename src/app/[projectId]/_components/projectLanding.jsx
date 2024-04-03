@@ -36,23 +36,27 @@ const LandingSection = ({ projectData }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <motion.h1 data-scroll data-scroll-speed="-2" 
-            data-speed="0"
-            className='textC text-6xl sm:text-[10rem] max-w-[75vw] mouseParallax pl-10 text-LunarDawn tracking-wider font-satoshi-bold'
+          <Parallax speed={10}>
+          <motion.h1 data-scroll data-scroll-speed="1" 
+            
+            className='textC text-6xl sm:text-[10rem] max-w-[75vw]  pl-10 text-LunarDawn tracking-wider font-satoshi-bold'
            
             animate={controlsHeader}
           >
+            
             {secondaryHeader ? secondaryHeader : mainHeader}
           </motion.h1>
+          
           <p className='text-2xl hidden text-black overflow-hidden textP align-baseline font-Satoshi font-light'>{title}</p>
+          </Parallax>
         </motion.div>
       </motion.div>
-      <motion.div data-scroll data-scroll-direction="" data-scroll-speed="3"
+      <motion.div data-scroll data-scroll-speed="4"
         className='w-full h-full z-[3]  justify-end flex overflow-hidden items-center'
         id='thumbnail'
         animate={controls}
       >
-        {/* <Parallax speed={20}> */}
+        <Parallax speed={20}>
         <motion.img 
         initial={{ clipPath:"circle(0% at 0% 0)",scale:0.8 }}
         animate={{ clipPath:"circle(150% at 100% 0)",scale:1 }}
@@ -62,7 +66,7 @@ const LandingSection = ({ projectData }) => {
           src={thumbnail2}
           alt="Project Thumbnail"
         />
-        {/* </Parallax> */}
+        </Parallax>
       </motion.div>
     </motion.div>
   );

@@ -83,14 +83,19 @@ const ProjectCard = ({ project }) => {
             )}
           </div>
         </div>
-        <div data-scroll data-scroll-speed="2" data-scroll-offset={[30, -10]} className=" z-3 group sm:mt-12 flex justify-center items-center w-full absolute">
+        <div data-scroll data-scroll-speed="1.5" data-scroll-offset={[30, -10]} className=" z-3 group sm:mt-12 flex justify-center items-center w-full absolute">
+        <Parallax className=' ' translateY={[30, -10]} speed={50}>
           <motion.p animate={titleAnimation} className={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize text-center `} >{
             isMobile === true ? (project.mainHeaderMobile) : (project.title)}</motion.p>
+          </Parallax>
         </div>
-        <div className=' flex items-end justify-end absolute bottom-10 mb-24 inset-y-12 inset-x-16'  data-scroll data-scroll-speed="3" data-scroll-offset={[10, -20]}>
+        <div className=' flex items-end justify-end absolute bottom-10 mb-24 inset-y-12 inset-x-16'  data-scroll data-scroll-speed="3.5" data-scroll-offset="20%,30%">
+        <Parallax className=' flex items-end justify-end absolute bottom-10 mb-24 inset-y-12 inset-x-16' translateY={[50, -20]} speed={10}>
+
         <motion.h4 animate={mainHeaderAnimation} className={`mainHeader font-satoshi-light text-pretty  border- border-  text-4xl sm:text-6xl z-1 ${isMobile === true ? (project.textColorMobile) : (project.textColor)} `}>
           {project.mainHeader}
         </motion.h4>
+        </Parallax>
         </div>
         {project.thumbnail3d !== null && project.thumbnail3d !== undefined && (
           <div className='sm:flex hidden transition-all duration-1000  h-full w-full  justify-center absolute'>
