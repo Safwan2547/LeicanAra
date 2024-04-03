@@ -26,7 +26,7 @@ function HomePage() {
   return (
     <ParallaxProvider>
     <div 
-    className=' h-[500vh]   bg-white'>
+    className='   bg-white'>
 
             <MouseParallax/>
 

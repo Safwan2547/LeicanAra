@@ -1,7 +1,7 @@
 import React,{useEffect,useRef} from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import AnimatedParagraph from '../paragraphAnimator';
-// import minimalImg from '../../assets/introductory2.webp';
+// import minimalImg from '/introductory2.webp';
 import { Parallax } from 'react-scroll-parallax';
 
 
@@ -14,7 +14,7 @@ function Introductory() {
 
   return (
     <section 
-    scrollRef={scrollRef}
+    ref={scrollRef}
       id="Introductory"
       className={`relative  h-[120vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
     >

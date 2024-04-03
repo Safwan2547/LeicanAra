@@ -5,11 +5,12 @@ const AnimatedParagraph = (props) => {
   // Ensure this is a string. The error could happen if this was not properly defined or mistyped.
   const paragraph = props.inputText || "default";
   const words = paragraph.split(" "); // Splitting the string into an array of words.
-  const ref = useRef(null)
+  const containerref3 = useRef(null)
 
   let { scrollYProgress } = useScroll({
-    target: ref,
+    target: containerref3.current,
     offset: ["center", " end"]
+    
 
     
     
@@ -17,7 +18,7 @@ const AnimatedParagraph = (props) => {
 
   
   return (
-      <div ref={ref} className={` mt-12 flex flex-wrap  align-baseline z-10 text-wrap  w-[75vw] mx-12`}>
+      <div ref={containerref3} className={` mt-12 flex flex-wrap  align-baseline z-10 text-wrap  w-[75vw] mx-12`}>
         {words.map((word, index) => {
           // Calculate start and end range for each word based on its position in the array
           const rangeStart = 1-(index / words.length);
