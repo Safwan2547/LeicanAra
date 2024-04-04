@@ -17,31 +17,33 @@ function Introductory() {
 
   })
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest)
-  })
+
 
  
   return (
     <section 
     
       id="Introductory"
-      className={`relative  h-[120vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
+      className={`relative  h-[100vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
     >
       {/* <div className="  w-full flex flex-col items-center justify-center  sm:p-0"> */}
         {/* <img src={minimalImg} alt="Minimalistic image" className="w-[32rem] aspect-video object-cover z-0" /> */}
         
         
       {/* </div> */}
+
+      {/* <Parallax easing={"easeInOutCirc"}  scale={[0,2]}  className='h-full flex justify-center items-center absolute w-full bg-NightFall'>
+      </Parallax> */}
       
       <motion.div ref={scrollRef} className="   text-wrap align-baseline  z-10">
-        <motion.h1 className='text-black text-7xl font-satoshi-light' style={{ opacity: scrollYProgress }} >We tell stories to empower visibility!</motion.h1>
+        <motion.h1 className='text-NightFall text-7xl font-satoshi-light' style={{ opacity: scrollYProgress }} >We tell stories to empower visibility!</motion.h1>
       {/* <AnimatedParagraph   style={{ opacity: scrollYProgress }} inputText="We tell stories to empower visibility!" textStyle="text-5xl font-Lora" />
         <AnimatedParagraph  textStyle="text-3xl font-satoshi-light " inputText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
         " /> */}
       
 
         </motion.div>
+        
 
     </section>
   );

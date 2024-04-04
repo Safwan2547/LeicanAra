@@ -38,7 +38,7 @@ function HomePage() {
            
         <ProjectGrid projects={projects} />
 
-        {/* <Capabilities/> */}
+        <Capabilities/>
         <CallToAction />
 
         
