@@ -34,7 +34,7 @@ function HomePage() {
        
             
             <LandingPage  />      
-            <Introductory/>
+            {/* <Introductory/> */}
            
         <ProjectGrid projects={projects} />
 
