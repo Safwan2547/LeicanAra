@@ -25,11 +25,12 @@ function LandingPage() {
         <Parallax speed={-15} >
         <div data-scroll  data-scroll-speed="4" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
           <motion.video
-            className="z-1 outline-none scale-[60%] border-none overflow-hidden object-cover hover:none"
+            className="z-1 !outline-none p-2 scale-[60%] border-none overflow-hidden object-cover hover:none"
             controls={false} autoPlay muted loop
             transition={{ duration: 3, ease: "circInOut" }}
             src={'/Website landing 1.mp4'}
             type="video/mp4"
+            style={{ outline: 'none' }}
           />
         </div>
         </Parallax>
@@ -40,7 +41,7 @@ function LandingPage() {
             style={{ clipPath: 'circle(0% at 0% 0)' }}
             data-speed="6"
             id='hero_line'
-            className={` relative landingAnimations scale-[90%] font-extralight tracking-wide textC mb-5 opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
+            className={` relative landingAnimations scale-[90%] font-extralight tracking-wide textC mb-10 opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
             initial={{ clipPath: 'circle(0% at 0% 0)', scale: 0.90,color:"#141414" }}
             animate={controlsHeader} // Using controlsHeader for animation
             transition={{ delay: 0.7, duration: 1.5, ease: "circInOut" }}
