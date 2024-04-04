@@ -1,5 +1,4 @@
 
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 
 import "./globals.css";
@@ -9,10 +8,16 @@ import Navbar from "../components/nav";
 // import LoadingScreen from "../components/loading";
 import Footer from "../components/Footer";
 import SmoothScroll from "@/components/smoothScroll";
+import { AnimatePresence } from "framer-motion";
+ 
+
+
 export const metadata = {
   title: 'LeicanAra',
 }
 export default function RootLayout({ children }) {
+
+  
  
  
 
@@ -22,6 +27,7 @@ export default function RootLayout({ children }) {
       <body  className="overflow-hidden bg-white">
       <Navbar   />       
        <Cursor />
+       
        <SmoothScroll>
         <main>{children}</main>
         </SmoothScroll>
