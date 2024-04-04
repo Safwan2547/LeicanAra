@@ -36,7 +36,7 @@ function LandingPage() {
         </Parallax>
       
         <div data-scroll data-scroll-speed="1.5" className='opacity-100 text-NightFall hidden sm:flex sm:absolute hover:text-LunarTwilight  duration-200 bottom-[10%] w-2/3 flex-col z-3 perspective-800'>
-        <Parallax speed={10} >
+        <Parallax easing={""}  scale={[1,1.2]} speed={10} >
           <motion.h1
             style={{ clipPath: 'circle(0% at 0% 0)' }}
             data-speed="6"

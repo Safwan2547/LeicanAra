@@ -11,7 +11,6 @@ import img6 from '/public/Container-Mockup.webp';
 
 
 function ImageFloater() {
-
   const imgArray = [img1, img2, img3,img4,img5,img6];
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0); // Added state to keep track of the current index
@@ -38,17 +37,18 @@ function ImageFloater() {
     setCurrentIndex((currentIndex + 1) % imgArray.length);
 
     if (images.length >= 2) {
-        // setImages(currentImages => currentImages.slice(1));
-        setTimeout(() => {    setImages(currentImages => [...currentImages, newImage]);
+        setImages(currentImages => currentImages.slice(1));
+        setTimeout(() => {setImages(currentImages => [...currentImages, newImage]);
         },500);
 
       
     }
     else{
       setImages(currentImages => [...currentImages, newImage]);
+      console.log(images.length)
+
 
     }
-
 
     // Schedule the removal of this image after 3 seconds
     setTimeout(() => {
@@ -76,7 +76,7 @@ function ImageFloater() {
       scale: 0.7,
       clipPath: "circle(150% at 0% 0)",
       y: image.y + image.maxY,
-      rotate: 0,
+      rotate: image.rotate,
       transition: {
         scale: { duration: 1, ease: "anticipate" },
         clipPath: { duration: 1, ease: "anticipate" },
@@ -107,7 +107,7 @@ function ImageFloater() {
             exit="exit"
             custom={image}
           >
-          <Image src={image.src} alt="Dynamic" width={600} height="auto"   />
+          <Image src={image.src} alt="Dynamic" width={600}    />
 
           </motion.div>
         ))}

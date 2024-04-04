@@ -84,7 +84,7 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
         <div data-scroll data-scroll-speed="1.5" data-scroll-offset={[30, -10]} className=" z-3 group sm:mt-12 flex justify-center items-center w-full absolute">
-        <Parallax className=' ' translateY={[30, -10]} speed={50}>
+        <Parallax className=' ' easing={"easeInOutCirc"} translateY={[30, -10]} speed={50}>
           <motion.p animate={titleAnimation} className={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize text-center `} >{
             isMobile === true ? (project.mainHeaderMobile) : (project.title)}</motion.p>
           </Parallax>

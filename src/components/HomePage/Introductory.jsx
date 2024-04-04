@@ -1,5 +1,5 @@
-import React,{useEffect,useRef} from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React,{use, useEffect,useRef} from 'react';
+import { motion, useAnimation, useInView,useScroll,useMotionValueEvent } from 'framer-motion';
 import AnimatedParagraph from '../paragraphAnimator';
 // import minimalImg from '/introductory2.webp';
 import { Parallax } from 'react-scroll-parallax';
@@ -10,11 +10,21 @@ function Introductory() {
   const marginExpression = `my-${Math.floor(margin / 2)} sm:mt-${Math.floor(margin)}`;
 
   const scrollRef = useRef(null); // Create a ref for the scrollable element
+  useEffect(() => {})
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["end end", "center center"]
 
+  })
 
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+  })
+
+ 
   return (
     <section 
-    ref={scrollRef}
+    
       id="Introductory"
       className={`relative  h-[120vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
     >
@@ -24,14 +34,14 @@ function Introductory() {
         
       {/* </div> */}
       
-      <div className="   text-wrap align-baseline  z-10">
-        <Parallax translateY={[-50, 50]} speed={-20}>
-      <AnimatedParagraph  inputText="We tell stories to empower visibility!" textStyle="text-5xl font-Lora" />
+      <motion.div ref={scrollRef} className="   text-wrap align-baseline  z-10">
+        <motion.h1 className='text-black text-7xl font-satoshi-light' style={{ opacity: scrollYProgress }} >We tell stories to empower visibility!</motion.h1>
+      {/* <AnimatedParagraph   style={{ opacity: scrollYProgress }} inputText="We tell stories to empower visibility!" textStyle="text-5xl font-Lora" />
         <AnimatedParagraph  textStyle="text-3xl font-satoshi-light " inputText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        " />
-      </Parallax>
+        " /> */}
+      
 
-        </div>
+        </motion.div>
 
     </section>
   );

@@ -3,6 +3,7 @@
 import React,{ useState,useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import { inView,animate,timeline } from "motion"
+import { Parallax } from 'react-scroll-parallax';
 
 
 // Functional component to render a grid of projects
@@ -30,8 +31,10 @@ const boxes = document.querySelectorAll(".projectCard")
   
   return (
     // Outer container with flex layout and centering
-    <section id='gridClassWrap' className="w-[100%] flex justify-center  flex-col overflow-x-scroll items-center flex-wrap">
-      <h1 className='text-NightFall font-Lora font-light text-3xl    sm:text-7xl'>Projects</h1>
+    <section id='gridClassWrap' className="w-[100%] pt-24 flex justify-center  flex-col overflow-x-scroll items-center flex-wrap">
+      <Parallax easing={"easeOutCirc"} opacity={[0,1]} speed={-3} scale={[0.55,1]}> 
+      <h1 className='text-NightFall font-Lora  font-light text-3xl    sm:text-9xl'>Projects</h1>
+      </Parallax>
       {/* Grid container for projects with specified columns, gap, and border */}
       <div id='projectHolder' className={`${marginExpression2} sm:flex-col flex-row mt-24  relative flex overflow-x-scroll overflow-y-hidden 
        gap-2 sm:gap-24 sm:p-0 pl-4 pr-4 w-screen sm:w-[95vw]  snap-mandatory snap-x   `}>
