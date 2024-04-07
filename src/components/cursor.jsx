@@ -16,7 +16,7 @@ function Cursor() {
 
   }
   const smoothOptions={
-    stiffness: 500,
+    stiffness: 1000,
     damping: 30,
     mass:0.1,
   }

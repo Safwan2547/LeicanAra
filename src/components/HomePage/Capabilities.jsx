@@ -24,7 +24,7 @@ function Capabilities() {
       <Parallax speed={3} scale={[1,0.8]} easing={"easeInOut"} >
       {Capabilities_Data.map( (Capabilities, i) => {
           const targetScale=1 - ((Capabilities_Data.length - i) * 0.01);
-          return <CapabilityCard title={Capabilities.title} color={Capabilities.color} key={`p_${i}`} i={i} {...Capabilities_Data} progress={scrollYProgress} range={[i * 0.25, 1]} description={Capabilities.description} targetScale={targetScale}/>
+          return <CapabilityCard title={Capabilities.title} color={Capabilities.color} key={`p_${i}`} i={i} {...Capabilities_Data} progress={scrollYProgress} range={[i * 0.25, 1]} description={Capabilities.description} src={Capabilities.src} targetScale={targetScale}/>
         })}
         </Parallax>
     </div>

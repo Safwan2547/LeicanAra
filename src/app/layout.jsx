@@ -9,6 +9,8 @@ import Navbar from "../components/nav";
 // import LoadingScreen from "../components/loading";
 import Footer from "../components/Footer";
 import SmoothScroll from "@/components/smoothScroll";
+import Head from 'next/head';
+
 export const metadata = {
   title: 'LeicanAra',
 }
@@ -20,8 +22,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body  className="overflow-hidden bg-white">
-      <Navbar   />       
-       <Cursor />
+      <Head>
+      <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <Navbar   />   
+      <Cursor />
+    
+      
        <SmoothScroll>
         <main>{children}</main>
         </SmoothScroll>

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-
-
+import Lenis from '@studio-freight/lenis'
 import ImageFloater from '../imageFloater';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 
@@ -9,19 +8,22 @@ function LandingPage() {
   const controls = useAnimation();
   const controlsHeader = useAnimation();
 
+
+
   useEffect(() => {
     controls.start({ opacity: 1, scale: 1 });
     controlsHeader.start({clipPath:"circle(150% at 0% 0)" ,scale:1});
     controlsHeader.start({color: "#141414"},{transition: {delay:5}});
 
   }, [controls, controlsHeader]);
-
+ 
   return (
     
     <div className='overflow-clip w-screen h-[100vh]'>
       
-      <ImageFloater />
+      {/* <ImageFloater /> */}
       <div className={`transition-opacity overflow-hidden duration-1000 sm:ml-0  flex flex-col sm:flex-wrap justify-center sm:items-center sm:justify-items-start h-screen prose prose-sm lg:prose-xl text-MainBeige relative`}>
+
         <Parallax speed={-15} >
         <div data-scroll  data-scroll-speed="4" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
           <motion.video
@@ -49,7 +51,13 @@ function LandingPage() {
             <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span>
           </motion.h1>
           </Parallax>
+         
         </div>
+        
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeInOut",duration:2, delay:3}}  className='scrollButton textP flex absolute text-LunarDawn top-[92vh] opacity-60 left-[85vw] text-2xl font-satoshi-light'  >
+            <span className='textP text-NightFall'>Scroll Down</span>
+            <motion.span initial={{y:0}}  transition={{ ease: "circInOut", duration: 4, repeat: Infinity }} animate={{y:[0,5,0]}}  className='ml-2 text-3xl text-NightFall'>&#x2193;</motion.span>
+          </motion.div>
       </div>
     </div>
   );
