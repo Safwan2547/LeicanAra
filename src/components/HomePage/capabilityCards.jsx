@@ -3,6 +3,7 @@ import { useScroll, useTransform, motion, useInView,useAnimation } from 'framer-
 import { useEffect, useRef } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import { Capabilities_Data } from '@/data/Capabilities';
+import SmoothScroll from '../smoothScroll';
 
 const Card = ({ title, description, src, url, color, i, progress, range, targetScale }) => {
     const scale = useTransform(progress, range, [1, targetScale]);
@@ -30,26 +31,32 @@ const Card = ({ title, description, src, url, color, i, progress, range, targetS
         }
     },[cardAnimation,isInView])
 
-    const imageScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
     return (
-        <div ref={container} style={{ scale: scale }} className="h-full flex border-2 border-black items-center justify-center p-24 sticky top-10 ">
+        <div ref={container} style={{scale:scale,top: `calc(5vh + ${i * 120}px)` }} className="h-full flex border-2 border-black items-center justify-center  sticky  ">
 
             <motion.div
                 ref={ref} // attaching the ref to the motion.div
-                className="flex flex-col relative h-[500px] w-[1000px] "
-                style={{ backgroundColor: color, scale, top: `calc(-5vh + ${i * 50}px)` }}
+                className="flex flex-col justify-center items-center relative h-[40vw] w-[80vw] "
+                style={{ backgroundColor: "#23323e",scale:scale }}
                animate={cardAnimation}
             >
-                <div className="flex h-full gap-5">
-                    <div className="w-[40%] relative  ">
-                        <h1 className='text-8xl p-3  z-[3] text-MainBeige font-Lora'>{title}</h1>
-                        <p>{description}</p>
+                <div className='h-[30%] items-center border-2 border-green-500 w-full flex pt-5 flex-col'>
+
+                <h1 className='text-7xl  z-[3] text-MainBeige font-Lora'>{title}</h1>
+                </div>
+               
+                <div className="flex h-full gap-48">
+                
+                    <div className="w-[40%] flex justify-center items-center relative  ">
+                        
+                        <p className='text-xl font-satoshi-light'>{description}</p>
 
                     </div>
 
-                    <div className="relative w-[60%] h-full ">
-                        <div style={{ scale: imageScale }} className="w-full h-full">
+                    <div className="relative w-[50%] h-full ">
+                        <div style={{ scale: imageScale }} className="w-full object-fit h-full">
                             <Image
                                 height={500}
                                 width={500}

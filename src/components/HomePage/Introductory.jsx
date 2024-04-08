@@ -23,7 +23,7 @@ function Introductory() {
   return (
     <section 
     
-      id="Introductory"
+      id="Introductory" href='#introductory'
       className={`relative  h-[100vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
     >
       {/* <div className="  w-full flex flex-col items-center justify-center  sm:p-0"> */}

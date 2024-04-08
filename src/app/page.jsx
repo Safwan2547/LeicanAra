@@ -25,6 +25,7 @@ function HomePage() {
 
   return (
     <ParallaxProvider>
+      
     <div 
     className='   bg-white'>
 

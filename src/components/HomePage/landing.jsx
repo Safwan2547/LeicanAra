@@ -1,12 +1,22 @@
 import React, { useEffect,useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation,useVelocity } from 'framer-motion';
 import Lenis from '@studio-freight/lenis'
+import { useLenis } from '@studio-freight/react-lenis';
 import ImageFloater from '../imageFloater';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 
 function LandingPage() {
   const controls = useAnimation();
   const controlsHeader = useAnimation();
+  const lenis = useLenis();
+
+  const handleClick = () => {
+    // Assuming vertical scrolling, calculate the target position
+    const targetY =  window.innerHeight;
+    lenis.scrollTo(targetY, {
+      duration:1.5// Duration of the scroll animation in seconds
+    });
+  };
 
 
 
@@ -54,9 +64,11 @@ function LandingPage() {
          
         </div>
         
-        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeInOut",duration:2, delay:3}}  className='scrollButton textP flex absolute text-LunarDawn top-[92vh] opacity-60 left-[85vw] text-2xl font-satoshi-light'  >
-            <span className='textP text-NightFall'>Scroll Down</span>
-            <motion.span initial={{y:0}}  transition={{ ease: "circInOut", duration: 4, repeat: Infinity }} animate={{y:[0,5,0]}}  className='ml-2 text-3xl text-NightFall'>&#x2193;</motion.span>
+        {/* This is the code for the scroll down arrow on the bottom right of the website */}
+       
+        <motion.div onClick={handleClick} initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeInOut",duration:2, delay:3}}  className='scrollButton buttonC hover:scale-[110%] transition-all duration-[500ms] cursor-none flex absolute text-LunarDawn top-[92vh] opacity-60 left-[85vw] text-xl font-satoshi-light'  >
+            <span className='buttonC text-NightFall'>Scroll Down</span>
+            <motion.span initial={{y:0}}  transition={{ ease: "circInOut", duration: 4, repeat: Infinity }} animate={{y:[0,5,0]}}  className='ml-2   text-NightFall'>&#x2193;</motion.span>
           </motion.div>
       </div>
     </div>

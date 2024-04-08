@@ -16,9 +16,9 @@ function Cursor() {
 
   }
   const smoothOptions={
-    stiffness: 1000,
+    stiffness: 500,
     damping: 30,
-    mass:0.1,
+    mass:0.01,
   }
   const smoothMouse={
     x:useSpring(mouse.x,smoothOptions),
