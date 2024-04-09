@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
     
       
        <SmoothScroll horizontal={false}>
-        <NoiseOverlay  />
+        {/* <NoiseOverlay  /> */}
         <main>{children}</main>
         </SmoothScroll>
         <Footer/>

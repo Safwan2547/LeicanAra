@@ -1,53 +1,44 @@
-import React,{use, useEffect,useRef} from 'react';
-import { motion, useAnimation, useInView,useScroll,useMotionValueEvent } from 'framer-motion';
-import AnimatedParagraph from '../paragraphAnimator';
-// import minimalImg from '/introductory2.webp';
-import { Parallax } from 'react-scroll-parallax';
-
+import React, { useEffect, useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import { Parallax,ParallaxBanner } from 'react-scroll-parallax';
+import Image from 'next/image';
+// Ensure all used components and hooks are correctly imported
 
 function Introductory() {
-  const margin = 20;
-  const marginExpression = `my-${Math.floor(margin / 2)} sm:mt-${Math.floor(margin)}`;
+  const scrollRef = useRef(null);
 
-  const scrollRef = useRef(null); // Create a ref for the scrollable element
-  useEffect(() => {})
   const { scrollYProgress } = useScroll({
     target: scrollRef,
-    offset: ["end end", "center center"]
+    offset: ["end end", "center center"], // Adjusted for clarity, ensure this matches your intended effect
+  });
 
-  })
-
-
-
- 
   return (
-    <section 
-    
-      id="Introductory" href='#introductory'
-      className={`relative  h-[100vh] z-[4] overflow-clip flex-col   justify-center flex items-center `}
-    >
-      {/* <div className="  w-full flex flex-col items-center justify-center  sm:p-0"> */}
-        {/* <img src={minimalImg} alt="Minimalistic image" className="w-[32rem] aspect-video object-cover z-0" /> */}
-        
-        
-      {/* </div> */}
+    <section id="Introductory" className="relative h-[150vh] z-4 overflow-clip flex flex-col mt-24 items-start">
+      <motion.div ref={scrollRef} className="break-words  m-10  leading-[0.9] w-[70vw] align-baseline z-10">
+      <Parallax easing={"easeInOutCirc"} scale={[0.98,1]}  speed={1} >
+        <motion.h1 className='text-NightFall  text-[12rem] overflow-clip font-satoshi-light' style={{ opacity: scrollYProgress }}>
+          Introduction
+        </motion.h1>
+        </Parallax>
+        <Parallax easing={"easeInOutCirc"} speed={4} >
+        <motion.p className='text-NightFall indent mt-12 pl-4 leading-normal text-3xl overflow-clip font-satoshi-light' style={{ opacity: scrollYProgress }}>
+        LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. Specializing in crafting unique brand identities, LeicanAra ensures that each brand not only encapsulates its essence but also resonates deeply with its target audience, making it memorable in a crowded marketplace.        
+        </motion.p>
+        </Parallax>
 
-      {/* <Parallax easing={"easeInOutCirc"}  scale={[0,2]}  className='h-full flex justify-center items-center absolute w-full bg-NightFall'>
-      </Parallax> */}
-      
-      <motion.div ref={scrollRef} className="   text-wrap align-baseline  z-10">
-        <motion.h1 className='text-NightFall text-7xl font-satoshi-light' style={{ opacity: scrollYProgress }} >We tell stories to empower visibility!</motion.h1>
-      {/* <AnimatedParagraph   style={{ opacity: scrollYProgress }} inputText="We tell stories to empower visibility!" textStyle="text-5xl font-Lora" />
-        <AnimatedParagraph  textStyle="text-3xl font-satoshi-light " inputText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        " /> */}
-      
-
-        </motion.div>
         
+      </motion.div>
+
+      <div className='w-full  flex justify-end '>
+        <div className='w-1/2 mr-10'>
+      <ParallaxBanner
+      layers={[{ image: '/CapabilityCard1.webp',translateX:[10,0], scale:[0.8,1], speed: -10 }]}
+      className=" aspect-[2/1]"
+    /></div>
+    </div>
 
     </section>
   );
 }
-
 
 export default Introductory;

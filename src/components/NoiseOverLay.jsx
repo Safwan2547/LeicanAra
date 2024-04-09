@@ -23,7 +23,7 @@ const NoiseOverlay = () => {
     }, []);
 
   return (
-    <div ref={noiseRef} className="fixed inset-0 opacity-40 z-10 pointer-events-none bg-noise bg-repeat-round" style={{ backgroundImage: "url('/noise.avif')" }}>
+    <div ref={noiseRef} className="fixed inset-0 scale-[200%] opacity-40 z-10 pointer-events-none bg-noise bg-repeat-round" style={{ backgroundImage: "url('/noise.avif')" }}>
     </div>
   );
 };
