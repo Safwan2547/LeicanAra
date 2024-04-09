@@ -33,7 +33,7 @@ const boxes = document.querySelectorAll(".projectCard")
     // Outer container with flex layout and centering
     <section id='gridClassWrap' className="w-[100%] pt-48 flex justify-center  flex-col overflow-x-scroll items-center flex-wrap">
       <Parallax easing={"easeOutCirc"} opacity={[0,1]} speed={-3} scale={[0.95,1]}> 
-      <h1 className='text-NightFall font-Lora  font-bold text-3xl mb-48   sm:text-[24rem]'>Projects</h1>
+      <h1 className='text-NightFall   font-satoshi-bold text-3xl mb-48   sm:text-[22rem]'>Projects</h1>
       </Parallax>
       {/* Grid container for projects with specified columns, gap, and border */}
       <div id='projectHolder' className={`${marginExpression2} sm:flex-col flex-row mt-24  relative flex overflow-x-scroll overflow-y-hidden 
