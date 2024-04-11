@@ -21,18 +21,18 @@ function Introductory() {
 
   return (
     <section id="Introductory" className="relative h-[150vh] z-4 overflow-clip flex flex-col mt-24 items-start">
-      <motion.div ref={scrollRef} className="break-words  m-10  leading-[0.9] w-[70vw] align-baseline z-10">
-      <Parallax easing={"easeInOutCirc"} scale={[0.98,1]}  speed={1} >
-        <motion.h1 className='text-NightFall  text-[12rem] overflow-clip font-satoshi-light' initial={{ opacity: 0 }}
+      <motion.div ref={scrollRef} className="break-words  m-10  leading-[0.9] w-[70vw] align-baseline flex flex-col z-10">
+      <Parallax easing={""} scale={[0.9,1]}  speed={10} className='' >
+        <motion.h1 className='text-NightFall  text-[12rem] font-satoshi-light' initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 1 }}
             
             >
-          Introduction
+          Prologue
         </motion.h1>
         </Parallax>
-        <Parallax easing={"easeInOutCirc"} speed={4} >
-        <motion.p className='text-NightFall indent mt-12 pl-4 leading-normal text-3xl overflow-clip opacity-80 font-satoshi-light f' initial={{ opacity: 0 }}
+        <Parallax easing={"easeInOutCirc"}  speed={4} >
+        <motion.p className='text-NightFall  indent mt-12 pl-4 leading-normal text-3xl overflow-clip opacity-80 font-satoshi-light f' initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.5 }}
             >
