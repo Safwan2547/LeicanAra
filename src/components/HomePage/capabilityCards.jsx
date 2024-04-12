@@ -38,13 +38,13 @@ const Card = ({ title, description, src, url, color, i, progress, range, targetS
 
             <motion.div
                 ref={ref} // attaching the ref to the motion.div
-                className="flex flex-col justify-center items-center relative h-[40vw] w-[80vw] "
-                style={{ backgroundColor: "#23323e",scale:scale }}
+                className="flex flex-col justify-center items-center relative h-[50vw] w-[90vw] "
+                style={{ backgroundColor:color,scale:scale }}
                animate={cardAnimation}
             >
                 <div className='h-[30%] items-center border-2 border-green-500 w-full flex pt-5 flex-col'>
 
-                <h1 className='text-7xl  z-[3] text-MainBeige font-Lora'>{title}</h1>
+                <h1 className='text-9xl  z-[3] text-#808080 font-satoshi-normal'>{title}</h1>
                 </div>
                
                 <div className="flex h-full gap-48">
@@ -55,16 +55,15 @@ const Card = ({ title, description, src, url, color, i, progress, range, targetS
 
                     </div>
 
-                    <div className="relative w-[50%] h-full ">
+                    
                         <div style={{ scale: imageScale }} className="w-full object-fit h-full">
                             <Image
-                                height={500}
+                                height={1000}
                                 width={500}
                                 src={`/${src}`}
                                 alt="image"
                             />
                         </div>
-                    </div>
                 </div>
             </motion.div>
         </div>
