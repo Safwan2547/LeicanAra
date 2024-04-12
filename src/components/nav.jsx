@@ -64,9 +64,9 @@ function Navbar() {
                     {getNavbarTitle()}
                 </span>
             </div>
-            <button className={` h-12 w-24 group justify-center items-center flex-col flex  ease-in-out navItem hover:animate-pulse-slow   transform transition-button duration-500 hover:scale-110 buttonC relative buttonC font-Satoshi text-2xl z-[24] font-light cursor-none `} onClick={()=>toggleNav(true)}>
-            <div className={`group-hover:bg-LunarTwilight  buttonC absolute ease-in-out cursor-none  h-[0.2rem] ${navOpen?"bg-MainBeige w-10 rotate-45":"w-12 translate-y-1 bg-NightFall" } rounded-xl  transition-all duration-1000 `}></div>
-                    <div className={` group-hover:bg-LunarTwilight buttonC cursor-none h-[0.2rem] ${navOpen?"bg-MainBeige w-10 rotate-[315deg]":"w-8  bg-NightFall -translate-y-1" } rounded-lg ease-in-out absolute transition-all duration-1000 `}></div>
+            <button className={` scale-90 opacity-85 h-12 w-24 group ${navOpen ? "bg-MainBeige" : "bg-LunarDawn"} rounded-full rotate-[270deg]  justify-center items-center flex-col flex  ease-in-out navItem hover:opacity-100   transform transition-button duration-500 hover:scale-105 buttonC  buttonC font-Satoshi text-2xl z-[24] fixed right-0 top-1/2 font-light cursor-none `} onClick={()=>toggleNav(true)}>
+            <div className={` buttonC absolute ease-in-out cursor-none  h-[0.2rem] ${navOpen?"bg-LunarDawn w-10 rotate-45":"w-12 translate-y-1 bg-MainBeige" } rounded-xl  transition-all duration-1000 `}></div>
+                    <div className={`  buttonC cursor-none h-[0.2rem] ${navOpen?"bg-LunarDawn w-10 rotate-[315deg]":"w-8  bg-MainBeige -translate-y-1" } rounded-lg ease-in-out absolute transition-all duration-1000 `}></div>
 
             </button>
             <NavMenu navOpen={navOpen} toggleNav={toggleNav} />

@@ -16,7 +16,7 @@ const SubNavBar = () => {
     return (
         <div className="menu-item subnav-bar flex absolute bottom-14 justify-center gap-8">
             {socialMediaLinks.map((link, index) => (
-                <a key={index} href={link.url} className="subnav-link text-white buttonC font-satoshi-light hover:scale-110 duration-500 cursor-pointer hover:animate-pulse hover:text-gray-300 text-xl transition-all">{link.name}</a>
+                <a key={index} href={link.url} className="subnav-link text-MainBeige buttonC font-satoshi-light hover:scale-110 duration-500 cursor-pointer hover:animate-pulse  text-lg transition-all">{link.name}</a>
             ))}
         </div>
     );
@@ -55,7 +55,9 @@ const NavMenu = ({ navOpen, toggleNav }) => {
     return (
         <motion.div animate={controls} variants={navVariants} className={`overflow-hidden z-20 overlay no-scrollbar::-webkit-scrollbar pt-[10rem]  text-center top-0 left-0 w-screen h-screen fixed  `}>
             <motion.div className=' font-satoshi-light '>
-                <div data-speed="3" className='overlay-menu fixed overflow-hidden bg-NightFall border-white   w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   gap-24 justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+
+                <div data-speed="3" className='overlay-menu fixed overflow-hidden bg-NightFall border-white  w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+                    <div className='flex flex-col gap-24 '>
                     <div className={`menu-item `} onClick={() => toggleNav(false)} >
                         <p className='font-satoshi-light text-sm p-2 opacity-20'>(1)</p>
                         <TransitionLink to="/about" className={`${isAboutPage ? 'opacity-20' : 'opacity-100'}  hover:text-LunarTwilight transform ease-in-out transition-button duration-700 w-[20rem] hover:scale-100 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
@@ -76,6 +78,7 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                         <TransitionLink to="/contact" className={`${isContactPage ? 'opacity-20' : 'opacity-100'} hover:text-LunarTwilight transform ease-in-out w-[20rem]  transition-button duration-700 hover:scale-100 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`} >
                             <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > Contact  </Marquee>
                         </TransitionLink>
+                    </div>
                     </div>
                     <SubNavBar />
                 </div>

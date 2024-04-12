@@ -66,7 +66,7 @@ module.exports = {
       'opacity': 'opacity',
       'size':'height,width',
       'cursor':'size,width,height,background-color',
-      'button':'transform,color,height,width,background-color',
+      'button':'transform,color,height,width,background-color,opacity',
       'text':'transform,color,background-color',
       
     },
