@@ -5,8 +5,12 @@ import { useRouter, usePathname } from 'next/navigation'; // Corrected import fo
 import TransitionLink from './TransitionLink';
 import Marquee from 'react-fast-marquee'
 import delay from 'tailwindcss-animated/src/utilities/delay';
+
+import Image from 'next/image';
+
 const SubNavBar = () => {
     // Add your social media links here
+    
     const socialMediaLinks = [
         { name: 'Instagram', url: '#' },
         { name: 'Behance', url: '#' },
@@ -23,6 +27,8 @@ const SubNavBar = () => {
 };
 
 const NavMenu = ({ navOpen, toggleNav }) => {
+    const menuStarImg = '/Menu Star.svg';
+    const menuMoonImg = '/Menu Moon.svg';
     const location = usePathname();
     const isAboutPage = location === "/about";
     const isFAQPage = location === "/faq";
@@ -44,6 +50,11 @@ const NavMenu = ({ navOpen, toggleNav }) => {
         overlayClose: { clipPath: 'circle(0% at 0% 0)', transform: "scale(0.85)", transition: { duration: 1, ease: "circInOut" } }
     };
 
+    const floatVarient ={
+        overlayOpen: { y: [0, 5,0], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
+        overlayClose: { y: 0, transition: { duration: 1, ease: "circInOut" }}
+    }
+
     useEffect(() => {
     if (navOpen) {
         controls.start(["overlayOpen"])
@@ -53,11 +64,20 @@ const NavMenu = ({ navOpen, toggleNav }) => {
 }, [navOpen, controls]);
 
     return (
-        <motion.div animate={controls} variants={navVariants} className={`overflow-hidden z-20 overlay no-scrollbar::-webkit-scrollbar pt-[10rem]  text-center top-0 left-0 w-screen h-screen fixed  `}>
+        <motion.div initial={{x:"100%"}}
+        animate={controls} variants={navVariants} className={`overflow-hidden z-[13] overlay no-scrollbar::-webkit-scrollbar pt-[10rem]  text-center top-0 left-0 w-screen h-screen fixed  `}>
             <motion.div className=' font-satoshi-light '>
 
-                <div data-speed="3" className='overlay-menu fixed overflow-hidden bg-NightFall border-white  w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
-                    <div className='flex flex-col gap-24 '>
+              
+
+                <div  data-speed="3" className='overlay-menu fixed overflow-hidden bg-NightFall border-white  w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+                   
+                    <motion.div animate={controls} variants={floatVarient}  className='absolute flex flex-row justify-center items-center top-0 mt-12'>
+                       {/* <h1 className='portals font-satoshi-light text-8xl tracking-widest text-MainBeige'>Portals</h1> */}
+                        <Image src={menuStarImg} alt="Menu Star" width={75} height={75} />
+                    </motion.div >
+                    
+                    <motion.div className='flex flex-col gap-24 '>
                     <div className={`menu-item `} onClick={() => toggleNav(false)} >
                         <p className='font-satoshi-light text-sm p-2 opacity-20'>(1)</p>
                         <TransitionLink to="/about" className={`${isAboutPage ? 'opacity-20' : 'opacity-100'}  hover:text-LunarTwilight transform ease-in-out transition-button duration-700 w-[20rem] hover:scale-100 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
@@ -79,7 +99,7 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                             <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > Contact  </Marquee>
                         </TransitionLink>
                     </div>
-                    </div>
+                    </motion.div>
                     <SubNavBar />
                 </div>
             </motion.div>

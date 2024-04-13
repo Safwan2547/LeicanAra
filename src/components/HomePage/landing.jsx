@@ -1,14 +1,20 @@
-import React, { useEffect,useRef } from 'react';
+import React, { useEffect,useRef,useState } from 'react';
 import { motion, useAnimation,useVelocity } from 'framer-motion';
 import Lenis from '@studio-freight/lenis'
 import { useLenis } from '@studio-freight/react-lenis';
 import ImageFloater from '../imageFloater';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
+import delay from 'tailwindcss-animated/src/utilities/delay';
 
-function LandingPage() {
+function LandingPage(props) {
   const controls = useAnimation();
   const controlsHeader = useAnimation();
   const lenis = useLenis();
+  const [playVideo, setPlayVideo] = useState(false);  // State to control video playback
+  const videoRef = useRef(null);  // Create a ref for the video element
+
+  const {loadingTime} = props;
+
 
   const handleClick = () => {
     // Assuming vertical scrolling, calculate the target position
@@ -20,12 +26,28 @@ function LandingPage() {
 
 
 
-  useEffect(() => {
-    controls.start({ opacity: 1, scale: 1 });
-    controlsHeader.start({clipPath:"circle(150% at 0% 0)" ,scale:1});
-    controlsHeader.start({color: "#141414"},{transition: {delay:5}});
+ useEffect(() => {
+   setTimeout(() => {
+     if (videoRef.current) {
+       videoRef.current.play();  // Manually play the video
+     }},loadingTime*1000+1)
 
-  }, [controls, controlsHeader]);
+   console.log("loading time made it to page " + loadingTime)
+
+    const sequence = async () => {
+      // Trigger animations in a sequence using `await`
+      
+      await controls.start({ opacity: 1, scale: 1  }, { transition: { delay:loadingTime } });
+      
+      await controlsHeader.start({ clipPath: "circle(150% at 0% 0)", scale: 1 });
+      controlsHeader.start({ color: "#141414" }, { transition: { delay:loadingTime+2 } });
+
+      
+
+    };
+
+    sequence();
+  }, [controls,controlsHeader]);
  
   return (
     
@@ -38,7 +60,10 @@ function LandingPage() {
         <div data-scroll  data-scroll-speed="4" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
           <motion.video
             className="z-1 !outline-none p-2 scale-[60%] border-none overflow-hidden object-cover hover:none"
-            controls={false} autoPlay muted loop
+            controls={false} 
+            muted loop
+            autoPlay={false}
+            ref={videoRef}
             transition={{ duration: 3, ease: "circInOut" }}
             src={'/Website landing 1.mp4'}
             type="video/mp4"
@@ -56,7 +81,7 @@ function LandingPage() {
             className={` relative landingAnimations scale-[90%] font-extralight tracking-wide textC mb-10 opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
             initial={{ clipPath: 'circle(0% at 0% 0)', scale: 0.90,color:"#141414" }}
             animate={controlsHeader} // Using controlsHeader for animation
-            transition={{ delay: 0.7, duration: 1.5, ease: "circInOut" }}
+            transition={{ delay: 3, duration: 1.5, ease: "circInOut" }}
           >
             <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span>
           </motion.h1>
@@ -66,7 +91,7 @@ function LandingPage() {
         
         {/* This is the code for the scroll down arrow on the bottom right of the website */}
        
-        <motion.div onClick={handleClick} initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeInOut",duration:2, delay:3}}  className='scrollButton buttonC hover:scale-[110%] transition-all duration-[500ms] cursor-none flex absolute text-LunarDawn top-[92vh] opacity-60 left-[85vw] text-xl font-satoshi-light'  >
+        <motion.div onClick={handleClick} initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeInOut",duration:2, delay:4}}  className='scrollButton buttonC hover:scale-[110%] transition-all duration-[500ms] cursor-none flex absolute text-LunarDawn top-[92vh] opacity-60 left-[85vw] text-xl font-satoshi-light'  >
             <span className='buttonC text-NightFall'>Scroll Down</span>
             <motion.span initial={{y:0}}  transition={{ ease: "circInOut", duration: 4, repeat: Infinity }} animate={{y:[0,5,0]}}  className='ml-2   text-NightFall'>&#x2193;</motion.span>
           </motion.div>

@@ -12,6 +12,7 @@ import Introductory from '../components/HomePage/Introductory';
 import Footer from '@/components/Footer';
 import MouseParallax from '../components/mouseParallax';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import LoadingScreen from '@/components/loading';
 // import NavMenu from '../components/navMenu';
 
 import { timeline } from 'motion';
@@ -20,11 +21,22 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 function HomePage() {
   const containerRef = useRef(null);
 
+  const loadingTime=0;
+  
+
+
+
+
+
+
 
   
 
   return (
     <ParallaxProvider>
+
+      <LoadingScreen loadingTime={loadingTime} />
+
       
     <div 
     className='   bg-white'>
@@ -34,12 +46,12 @@ function HomePage() {
 
        
             
-            <LandingPage  />      
+            <LandingPage loadingTime={loadingTime}/>      
             <Introductory/>
            
         <ProjectGrid projects={projects} />
 
-        <Capabilities/>
+        {/* <Capabilities/> */}
         <CallToAction />
 
         

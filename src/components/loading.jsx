@@ -1,62 +1,84 @@
-import React, { useEffect } from 'react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 function LoadingScreen(props) {
-  // Split the sentence into words
+  const [show, setShow] = useState(true);
+  
+
   const words = "Stories bind us like strings".split(" ");
-  const loadingTime=props.loadingTime
+  const { loadingTime } = props;
+
+  // Log loading time when it changes
   useEffect(() => {
     console.log("loadingTime=" + loadingTime);
-  }, [loadingTime]); // Added loadingTime as a dependency
+  }, [loadingTime]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(false);
+    }, props.loadingTime * 1000);
+  }, []);
   // Animation variants for each word
   const variants = {
-    hidden: { clipPath:"circle(0% at 0% 0%)",scale:0.9 },
+    hidden: { clipPath: "circle(0% at 0% 0%)",y:0, scale: 0.9 },
     visible: i => ({
-      clipPath:"circle(150% at 00% 0%)",
-     scale:1,
-      y:0,
-
+      clipPath: "circle(150% at 0% 0%)",
+      scale: 1,
+      y: -1000,
       transition: {
         clipPath: {
-         
-          duration: loadingTime/2, // Customize duration for opacity
-          ease: "anticipate", // Customize easing for opacity
+          duration: loadingTime / 2,
+          ease: "anticipate",
+        },
+        y: {
+          duration: loadingTime*0.4,
+          delay: loadingTime /2,
+          ease: "circInOut",
         },
         scale: {
-          
-          duration: loadingTime*0.7, // Customize duration for y movement
-          ease: "circInOut", // Customize easing for y movement
+          duration: loadingTime * 0.7,
+          ease: "circInOut",
         }
       },
     }),
   };
 
+  if (loadingTime===0) return null;
+
+  if (!show) return null;
+
+
   return (
-    <motion.div 
-    initial={
-        {clipPath:"circle(120% at 50% 50%)",}
-    }
-    animate={
-        {clipPath:"circle(0% at 50% 50%)",transition:{duration:loadingTime/3,delay:(loadingTime)-loadingTime/3,ease:"anticipate"}}
-    }
-    className="flex bg-NightFall w-screen justify-center items-center h-screen">
-      <motion.h1 variants={variants}
-            initial="hidden"
-            animate="visible" className="text-center text-8xl font-satoshi-light text-MainBeige">
+    <div className='bg-white h-screen fixed z-[100] w-screen'>
+    <motion.div
+      initial={{backgroundColor:"#141414" }}
+      animate={{
+        
+        backgroundColor: "#ffffff",
+        transition: {
+          duration: loadingTime / 3,
+          delay: loadingTime/2,
+          ease: "easeInOut"
+        }
+      }}
+      className="flex  z-[100] bg-white w-screen justify-center items-center h-screen"
+    >
+      <motion.h1
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        className="text-center text-8xl font-satoshi-light text-MainBeige"
+      >
         {words.map((word, index) => (
-          // Animate each word individually
-          <motion.span
-            key={index}
-            
-            custom={index} // Pass the index as the custom prop to use in the animation variants
-            className=" mr-4" // Add some space between words
-          >
+          <motion.span key={index} custom={index} className="mr-4">
             {word}
           </motion.span>
         ))}
       </motion.h1>
     </motion.div>
+    </div>
   );
 }
 
