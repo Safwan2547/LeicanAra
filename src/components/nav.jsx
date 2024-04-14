@@ -20,7 +20,7 @@ function Navbar() {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { delay: 1 } // 1 second delay
+            transition: { delay: 2 } // 1 second delay
         }
     };
     const toggleNav = (mod) => {

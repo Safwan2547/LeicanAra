@@ -34,7 +34,7 @@ const boxes = document.querySelectorAll(".projectCard")
     // Outer container with flex layout and centering
     <section id='gridClassWrap' className="w-[100%] pt-48 flex justify-center  flex-col  items-center flex-wrap">
       <Parallax easing={"easeOutCirc"} opacity={[0,1]} speed={-3} scale={[0.7,1]} className='w-screen'> 
-        <Marquee autoFill={true} speed={25} className='text-NightFall  font-light font-Lora  text-3xl  h-[12rem] w-full overflow-clip  sm:text-9xl'>&nbsp; Projects &nbsp;</Marquee>
+        <Marquee autoFill={true} speed={25} className='text-NightFall  fo font-Lora  text-3xl mb-24  h-[22rem] w-full  sm:text-[16rem]'>&nbsp; Projects &nbsp;</Marquee>
       </Parallax>
       {/* Grid container for projects with specified columns, gap, and border */}
       <div id='projectHolder' className={` ${marginExpression2} sm:flex-col flex-row mt-24  relative flex overflow-x-scroll overflow-y-hidden 

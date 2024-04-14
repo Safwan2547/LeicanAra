@@ -70,8 +70,8 @@ const NavMenu = ({ navOpen, toggleNav }) => {
 
               
 
-                <div  data-speed="3" className='overlay-menu fixed overflow-hidden bg-NightFall border-white  w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
-                   
+                <div  data-speed="3" className='overlay-menu fixed overflow-hidden   w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+                   <div className='h-full w-full backdrop-blur-lg absolute bg-NightFall bg-opacity-80'></div>
                     <motion.div animate={controls} variants={floatVarient}  className='absolute flex flex-row justify-center items-center top-0 mt-12'>
                        {/* <h1 className='portals font-satoshi-light text-8xl tracking-widest text-MainBeige'>Portals</h1> */}
                         <Image src={menuStarImg} alt="Menu Star" width={75} height={75} />
