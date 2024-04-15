@@ -64,7 +64,7 @@ function Navbar() {
                     {getNavbarTitle()}
                 </span>
             </div>
-            <button className={` scale-90 opacity-85 h-12 w-24 group ${navOpen ? "bg-MainBeige" : "bg-LunarDawn"} rounded-full rotate-[270deg]  justify-center items-center flex-col flex  ease-in-out navItem hover:opacity-100 z-[24]  transform transition-button duration-500 hover:scale-105 buttonC  buttonC font-Satoshi text-2xl  fixed right-0 top-1/2 font-light cursor-none `} onClick={() => toggleNav(true)}>
+            <button className={` scale-90  hover:bg-opacity-100 hover:backdrop-blur-none  h-12 w-24 group ${navOpen ? "bg-MainBeige bg-opacity-100 backdrop-blur-0" : "bg-LunarDawn bg-opacity-70 backdrop-blur-sm"} rounded-full rotate-[270deg]  justify-center items-center flex-col flex  ease-in-out navItem hover:opacity-100 z-[24]  transform transition-button duration-500 hover:scale-105 buttonC  buttonC font-Satoshi text-2xl  fixed right-0 top-1/2 font-light cursor-none `} onClick={() => toggleNav(true)}>
                 <div className={` buttonC absolute ease-in-out cursor-none  h-[0.2rem] ${navOpen ? "bg-LunarDawn w-10 rotate-45" : "w-12 translate-y-1 bg-MainBeige"} rounded-xl  transition-all duration-1000 `}></div>
                 <div className={`  buttonC cursor-none h-[0.2rem] ${navOpen ? "bg-LunarDawn w-10 rotate-[315deg]" : "w-8  bg-MainBeige -translate-y-1"} rounded-lg ease-in-out absolute transition-all duration-1000 `}></div>
 

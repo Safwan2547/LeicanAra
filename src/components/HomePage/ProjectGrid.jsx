@@ -37,10 +37,9 @@ const boxes = document.querySelectorAll(".projectCard")
       <Parallax easing={"easeOutCirc"} opacity={[0,1]} speed={-3} scale={[0.7,1]} className='w-screen'> 
 
         <Marquee autoFill={true} speed={25} className='text-NightFall  fo font-Lora  text-3xl mb-24  h-[22rem] w-full  sm:text-[16rem]'>&nbsp; Projects &nbsp;
-          <div className=" h-full flex justify-center items-center relative">
-            <video autoPlay loop muted className="h-72 scale-x-[-100%]" style={{ objectFit: 'contain' }}>
+          <div className=" h-full flex justify-center items-start relative">
+            <video autoPlay loop muted className="h-48 scale-x-[-100%]" style={{ objectFit: 'contain' }}>
               <source src={wandAni} type="video/mp4" />
-              Your browser does not support the video tag.
             </video>          
             </div>
         </Marquee>
