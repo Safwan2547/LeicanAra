@@ -74,10 +74,10 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                    
                     <motion.div   className='absolute flex flex-col justify-center items-center top-0 mt-12'>
                         <motion.div animate={controls} variants={floatVarient} > 
-                            <Image src={menuStarImg} alt="Menu Star" width={75} height={75} />
+                            <Image src={menuStarImg} alt="Menu Star" width={50} height={50} />
 
                         </motion.div>
-                        <h1 className='text-sm opacity-50 text-MainBeige mt-8 font-satoshi-light'>Strings</h1>
+                        {/* <h1 className='text-sm opacity-50 text-MainBeige mt-8 font-satoshi-light'>Strings</h1> */}
 
                     </motion.div >
                     

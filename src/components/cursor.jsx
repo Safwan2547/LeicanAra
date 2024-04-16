@@ -43,6 +43,7 @@ function Cursor() {
       else if (className.includes('textP')) setHovering('textP');
       else if (className.includes('footerC')) setHovering('footerC');
       else if (className.includes('enterC')) setHovering('enterC');
+      else if (className.includes('clickC')) setHovering('clickC');
       else if (className.includes('imageFloater')) setHovering('imageFloater');
       else setHovering(null);
     };
@@ -69,6 +70,9 @@ function Cursor() {
         return '!opacity-100 !w-1 !h-10 !border-white border-[1px] !border-opacity-30 !bg-NightFall cursor-none';
       case 'enterC':
         return '!opacity-100 transition-all !border-opacity-95 drop-shadow-lg !bg-MainBeige ease-in-out !w-24 !h-24 !border-NightFall border-solid cursor-none';
+      case 'clickC':
+        return '!opacity-100 transition-all cursor-none !border-opacity-95 drop-shadow-lg !bg-MainBeige ease-in-out !w-24 !h-24 !border-NightFall border-solid cursor-none';
+
       case `imageFloater`:
         return `!w-24 !h-24   !animate-pulse-slow`;
         default:
@@ -93,6 +97,15 @@ function Cursor() {
         <div className=' back animate-pulse-slow flex transition-opacity duration-500 justify-center w-full h-full items-center'>
           <div className="scale-[100%]">
             <span className='font-satoshi-light text-LunarTwilight'>VIEW</span>
+          </div>
+        </div>
+      );
+    }
+    else if (hovering === 'clickC') {
+      return (
+        <div className=' back animate-pulse-slow flex transition-opacity duration-500 justify-center w-full h-full items-center'>
+          <div className="scale-[100%]">
+            <span className='font-satoshi-light text-LunarTwilight'>Click</span>
           </div>
         </div>
       );
