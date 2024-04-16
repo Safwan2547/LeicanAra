@@ -4,7 +4,6 @@ import { motion, useAnimation, useAnimationControls,cubicBezier } from 'framer-m
 import { useRouter, usePathname } from 'next/navigation'; // Corrected import for Next.js useRouter hook
 import TransitionLink from './TransitionLink';
 import Marquee from 'react-fast-marquee'
-import delay from 'tailwindcss-animated/src/utilities/delay';
 
 import Image from 'next/image';
 
@@ -72,20 +71,25 @@ const NavMenu = ({ navOpen, toggleNav }) => {
 
                 <div  data-speed="3" className='overlay-menu fixed overflow-hidden   w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
                    <div className='h-full w-full backdrop-blur-md absolute bg-LunarDawn bg-opacity-80'></div>
-                    <motion.div animate={controls} variants={floatVarient}  className='absolute flex flex-row justify-center items-center top-0 mt-12'>
-                       {/* <h1 className='portals font-satoshi-light text-8xl tracking-widest text-MainBeige'>Portals</h1> */}
-                        <Image src={menuStarImg} alt="Menu Star" width={75} height={75} />
+                   
+                    <motion.div   className='absolute flex flex-col justify-center items-center top-0 mt-12'>
+                        <motion.div animate={controls} variants={floatVarient} > 
+                            <Image src={menuStarImg} alt="Menu Star" width={75} height={75} />
+
+                        </motion.div>
+                        <h1 className='text-sm opacity-50 text-MainBeige mt-8 font-satoshi-light'>Strings</h1>
+
                     </motion.div >
                     
                     <motion.div className='flex buttonC flex-col gap-24 '>
                     <div className={`menu-item  `} onClick={() => toggleNav(false)} >
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>(1)</p>
+                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Who we are</p>
                         <TransitionLink to="/about" className={`${isAboutPage ? 'opacity-20' : 'opacity-100'}   buttonC transform ease-in-out transition-button duration-700 w-[20rem] hover:scale-110 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
                             <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > About  </Marquee>
                         </TransitionLink>
                     </div>
                     <div className={`menu-item`} onClick={() => toggleNav(false)}>
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>(2)</p>
+                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Ask away</p>
 
                         <TransitionLink to="/faq" className={`${isFAQPage ? 'opacity-20' : 'opacity-100'}  buttonC transform  ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
                             <Marquee speed={15} direction='right' className='border-x  border-x-white border-opacity-[0.4]'  > FAQ  </Marquee>
@@ -93,7 +97,7 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                         </TransitionLink>
                     </div>
                     <div onClick={() => toggleNav(false)} className='menu-item'>
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>(3)</p>
+                        <p className='font-satoshi-light text-sm p-2 opacity-20'>React</p>
 
                         <TransitionLink to="/contact" className={`${isContactPage ? 'opacity-20' : 'opacity-100'}  buttonC transform ease-in-out w-[20rem]  transition-button duration-700 hover:scale-110 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`} >
                             <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > Contact  </Marquee>

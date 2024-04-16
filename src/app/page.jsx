@@ -17,6 +17,7 @@ import LoadingScreen from '@/components/loading';
 
 import { timeline } from 'motion';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import TarotSection from '@/components/HomePage/TarotSection';
 
 function HomePage() {
   const containerRef = useRef(null);
@@ -51,7 +52,8 @@ function HomePage() {
            
         <ProjectGrid projects={projects} />
 
-        {/* <Capabilities/> */}
+        <TarotSection/>
+
         <CallToAction />
 
         
