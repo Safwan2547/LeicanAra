@@ -15,8 +15,8 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
     const CARD_WIDTH = 350;
     
     const cardVarient = {
-        reset: { y:"100%", scale:[-1,0], transition: { duration: 0.3, ease: "anticipate" } },
-        start: {  y:"10%",scale:[0,1], transition: { duration: 0.3, ease: "anticipate" } },
+        reset: { y:"100%", scale:0, transition: { duration: 0.3, ease: "anticipate" } },
+        start: {  y:"10%",scale:1, transition: { duration: 0.3, ease: "anticipate" } },
 
     };
 
@@ -68,9 +68,9 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
                 
                 <div className='z-[1] relative  '>
                 
-                <Image height={800} width={350} src={currentImage} className='clickC cursor-none' alt="Tarot Card" />
+                <Image height={800} width={350} src={currentImage} className='clickC  cursor-none' alt="Tarot Card" />
                 </div>
-                <motion.div initial={{y:"100%",scale:0}} animate={controls} variants={cardVarient} className='transition-all duration-[750ms] overflow-clip clickC  absolute  tarot-back  z-[2] '>
+                <motion.div initial={{y:"100%",scale:0}} animate={controls} variants={cardVarient} className='transition-all duration-[500ms] ease-in-out overflow-clip clickC  absolute  tarot-back  z-[2] '>
                     <div className='flex justify-start flex-col absolute p-12  w-full h-full clickC items-start'>
                     <h1 className='  text-MainBeige text-4xl font-light max-w-[50%]  text-pretty text-left textC font-Lora'>{header} </h1>
                         <p className='text-MainBeige text-lg mt-4 leading-[1.7]  text-pretty text-left textP font-satoshi-light'>{text}</p>

@@ -69,7 +69,7 @@ const NavMenu = ({ navOpen, toggleNav }) => {
 
               
 
-                <div  data-speed="3" className='overlay-menu fixed overflow-hidden   w-[36rem] rounded-l-[1.5rem]  h-[95vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+                <div  data-speed="3" className='overlay-menu fixed overflow-hidden   w-[36rem] rounded-l-[1.5rem]  h-[90vh] right-0 top-[2.5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
                    <div className='h-full w-full backdrop-blur-md absolute bg-LunarDawn bg-opacity-80'></div>
                    
                     <motion.div   className='absolute flex flex-col justify-center items-center top-0 mt-12'>
@@ -97,7 +97,7 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                         </TransitionLink>
                     </div>
                     <div onClick={() => toggleNav(false)} className='menu-item'>
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>React</p>
+                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Say Hi!</p>
 
                         <TransitionLink to="/contact" className={`${isContactPage ? 'opacity-20' : 'opacity-100'}  buttonC transform ease-in-out w-[20rem]  transition-button duration-700 hover:scale-110 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`} >
                             <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > Contact  </Marquee>
