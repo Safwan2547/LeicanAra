@@ -18,7 +18,7 @@ function Footer() {
 
 
 
-    <footer className="relative p-10 overflow-hidden   flex justify-normal items-center h-56 sm:h-64 bg-NightFall text-nightfall py-24">
+      <footer className="relative p-10 overflow-hidden   flex justify-normal items-center h-56 sm:h-64 bg-[#121b21] text-nightfall py-24">
       <div className=' absolute left-0 bor'>
         <Image src="/LeicanAra Project/VectorBraidedStar.svg" alt="Braided Star" width={500} height={400} /> {/* Add BraidedStar here */}
         </div>
