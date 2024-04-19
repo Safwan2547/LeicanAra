@@ -1,11 +1,12 @@
 "use client"
 import React, { useEffect } from 'react';
-import { motion, useAnimation, useAnimationControls,cubicBezier } from 'framer-motion';
+import { motion, useAnimation, useAnimationControls,cubicBezier,stagger } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation'; // Corrected import for Next.js useRouter hook
 import TransitionLink from './TransitionLink';
 import Marquee from 'react-fast-marquee'
 
 import Image from 'next/image';
+import duration from 'tailwindcss-animated/src/utilities/duration';
 
 const SubNavBar = () => {
     // Add your social media links here
@@ -34,9 +35,14 @@ const NavMenu = ({ navOpen, toggleNav }) => {
     const isContactPage = location === "/contact";
     const controls = useAnimationControls();
     const customEase = cubicBezier(.08, .91, .45, 1);
+    const menuItems=[
+        {label:'Who we are',url:'/about',name:'About'},
+        {label:'Ask away',url:'/faq',name:'FAQ'},
+        {label:'Say Hi!',url:'/contact',name:'Contact'},
+    ]
 
     const navVariants = {
-        overlayOpen: { x: "0%", transition: { duration: 0.8, ease: customEase }},
+        overlayOpen: { x: "0%", transition: { duration: 0.8, ease: customEase}},
         overlayClose: { x: "100%", transition: { duration: 0.8, ease: "circInOut"} },
         
     };
@@ -44,10 +50,18 @@ const NavMenu = ({ navOpen, toggleNav }) => {
         initiateOverlay: { opacity: 0.2, transition: { delay: 1, duration: 2, ease: "linear" } },
         closeOverlay: { opacity: 0, transition: { delay: 1, duration: 2, ease: "easeInOut" } }
       }
-    const childVarients = {
-        overlayOpen: { clipPath: 'circle(150% at 0% 0)', transform: "scale(1)", transition: { duration: 1, ease: "circInOut" } },
-        overlayClose: { clipPath: 'circle(0% at 0% 0)', transform: "scale(0.85)", transition: { duration: 1, ease: "circInOut" } }
-    };
+    const childVarients = (index) =>({
+        overlayOpen: {
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', y: 0, transition: {
+                duration:1,
+                 delay: 0.2 * index ,
+                type: 'spring',   // Using spring type for transition
+                stiffness: 100,   // Control of the spring stiffness
+                damping: 30,      // Control of the damping - resistance
+                mass: 1,          // Mass of the element being animated} 
+            },},
+        overlayClose: { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',y:100, transition: { duration: 1, ease: "circInOut" } }
+    });
 
     const floatVarient ={
         overlayOpen: { y: [0, 5,0], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
@@ -82,27 +96,14 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                     </motion.div >
                     
                     <motion.div className='flex buttonC flex-col gap-24 '>
-                    <div className={`menu-item  `} onClick={() => toggleNav(false)} >
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Who we are</p>
-                        <TransitionLink to="/about" className={`${isAboutPage ? 'opacity-20' : 'opacity-100'}   buttonC transform ease-in-out transition-button duration-700 w-[20rem] hover:scale-110 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
-                            <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > About  </Marquee>
-                        </TransitionLink>
-                    </div>
-                    <div className={`menu-item`} onClick={() => toggleNav(false)}>
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Ask away</p>
-
-                        <TransitionLink to="/faq" className={`${isFAQPage ? 'opacity-20' : 'opacity-100'}  buttonC transform  ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
-                            <Marquee speed={15} direction='right' className='border-x  border-x-white border-opacity-[0.4]'  > FAQ  </Marquee>
-
-                        </TransitionLink>
-                    </div>
-                    <div onClick={() => toggleNav(false)} className='menu-item'>
-                        <p className='font-satoshi-light text-sm p-2 opacity-20'>Say Hi!</p>
-
-                        <TransitionLink to="/contact" className={`${isContactPage ? 'opacity-20' : 'opacity-100'}  buttonC transform ease-in-out w-[20rem]  transition-button duration-700 hover:scale-110 scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`} >
-                            <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'  > Contact  </Marquee>
-                        </TransitionLink>
-                    </div>
+                        {menuItems.map((item, index) => (
+                            <motion.div key={index} animate={controls} variants={childVarients(index)} className="menu-item" onClick={() => toggleNav(false)}>
+                                <p className='font-satoshi-light text-sm p-2 opacity-20'>{item.label}</p>
+                                <TransitionLink to={item.url} className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
+                                    <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'>{item.name}</Marquee>
+                                </TransitionLink>
+                            </motion.div>
+                        ))}
                     </motion.div>
                     <SubNavBar />
                 </div>

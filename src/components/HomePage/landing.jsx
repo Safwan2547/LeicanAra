@@ -58,6 +58,7 @@ function LandingPage(props) {
 
         <Parallax speed={-15} >
         <div data-scroll  data-scroll-speed="4" className="z-1  w-screen h-screen flex justify-center items-center border-none outline-none">
+         
           <motion.video
             className="z-1 !outline-none p-2 scale-[60%] border-none overflow-hidden object-cover hover:none"
             controls={false} 
