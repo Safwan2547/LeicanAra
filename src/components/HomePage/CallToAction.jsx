@@ -84,7 +84,7 @@ function CallToAction() {
             animate={hover ? "hoverIcon" : "normal"} // Trigger hover animation
             id="button" className="p-4 opacity rounded-full buttonC group flex justify-center items-center h-20 absolute w-96  transition-colors  duration-500 bg-LunarDawn">
             <h1 className=" buttonC   transition-all duration-500 cursor-none font-satoshi-light underline-offset-4 text-MainBeige  text-left text-3xl sm:text-4xl">
-          Let's work together!
+          Begin the Journey
         </h1>
         </motion.div>
         </motion.div>

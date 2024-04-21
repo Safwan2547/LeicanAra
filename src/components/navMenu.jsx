@@ -52,15 +52,23 @@ const NavMenu = ({ navOpen, toggleNav }) => {
       }
     const childVarients = (index) =>({
         overlayOpen: {
-            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', y: 0, transition: {
-                duration:1,
-                 delay: 0.2 * index ,
+            clipPath: 'circle(130.0% at 50% 0)', y: 0,scale:1, transition: {
+                duration:0.7,
+                 delay: (0.2 * index)+0.1 ,
                 type: 'spring',   // Using spring type for transition
                 stiffness: 100,   // Control of the spring stiffness
                 damping: 30,      // Control of the damping - resistance
                 mass: 1,          // Mass of the element being animated} 
             },},
-        overlayClose: { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',y:100, transition: { duration: 1, ease: "circInOut" } }
+        overlayClose: {
+            clipPath: 'circle(0% at 50% 0)', y: 100, scale: 0.5, transition: {
+                duration: 0.8,
+                delay: 0,
+                type: 'spring',   // Using spring type for transition
+                stiffness: 100,   // Control of the spring stiffness
+                damping: 30,      // Control of the damping - resistance
+                mass: 1,          // Mass of the element being animated} 
+             } }
     });
 
     const floatVarient ={

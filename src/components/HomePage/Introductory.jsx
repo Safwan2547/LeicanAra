@@ -22,17 +22,18 @@ function Introductory() {
 
 
   return (
-    <section id="Introductory" className="relative  z-4 overflow-clip flex flex-col mt-24 items-start">
+    <section id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col py-48 mt-24 items-start">
       <motion.div ref={scrollRef} className="break-words  m-10  leading-[0.9] w-[70vw] align-baseline flex flex-col z-3">
       <Parallax easing={""} scale={[0.9,1]}  speed={10} className='' >
-        <motion.h1 className='text-NightFall  text-[12rem] font-satoshi-light' initial={{ opacity: 0 }}
+        <motion.h1 className='text-MainBeige  text-[12rem] font-satoshi-light' initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 1 }}
             
             >
           Prologue
         </motion.h1>
-          <motion.p className='text-NightFall  indent mt-12  pl-4 leading-normal text-3xl overflow-clip opacity-80 font-satoshi-light f' initial={{ opacity: 0 }}
+        
+          <motion.p className='text-MainBeige  indent my-24  pl-4 leading-normal text-3xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
@@ -45,7 +46,17 @@ function Introductory() {
       </motion.div>
 
       <div className='w-full  p-12  firstChild flex justify-center items-start relative'>
-        <h1 className=' textC font-satoshi-light self-center text-[10rem] max-h-[160vh]  leading-[14rem] text-NightFall max-w-[45rem] ' > We get eyes on your brand.</h1>
+        <div className='flex flex-col'>
+        <motion.h1 className='text-MainBeige  text-3xl font-satoshi-light' initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 1 }}
+
+        >
+          The plot:
+        </motion.h1>
+          <h1 className=' textC font-satoshi-light self-center text-[10rem] max-h-[160vh]  leading-[14rem] text-MainBeige max-w-[45rem] ' > To get eyes on your brand.</h1>
+
+        </div>
         
         <div className=' flex flex-col justify-center items-center h-2/3 gap-12 max-h-[150vh]  w-[80%] '>
           <ParallaxBanner
