@@ -15,6 +15,7 @@ import ApproachSection from './_components/approachSection';
 import IdentitySection from './_components/identitySection';
 import EpilogueSection from './_components/epilogueSection';
 import MouseParallax from '../../components/mouseParallax';
+import Navbar from '@/components/nav';
 
 import Footer from '@/components/Footer';
 
@@ -28,6 +29,7 @@ const ProjectPage = ({params}) => {
 
     const containerRef2 = useRef(null);
     const [contentLoaded, setContentLoaded] = useState(false);
+    
 
     
     const gatherData = async () => {
@@ -167,6 +169,7 @@ const ProjectPage = ({params}) => {
 
     return (
         <ParallaxProvider>
+            
         <div  ref={containerRef2} className=" pageWrap text-NightFall leading-relaxed  overflow-hidden bg-white">
             {
             projectData ? (

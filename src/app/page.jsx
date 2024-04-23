@@ -21,7 +21,6 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import TarotSection from '@/components/HomePage/TarotSection';
 
 function HomePage() {
-  const containerRef = useRef(null);
 
   const loadingTime=0;
   
@@ -36,6 +35,7 @@ function HomePage() {
 
   return (
     <ParallaxProvider>
+      
 
       <LoadingScreen loadingTime={loadingTime} />
 
@@ -51,7 +51,7 @@ function HomePage() {
             <LandingPage loadingTime={loadingTime}/>      
             <Introductory/>
            
-        <ProjectGrid projects={projects} />
+        <ProjectGrid  projects={projects} />
 
         <TarotSection/>
 
