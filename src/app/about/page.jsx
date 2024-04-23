@@ -6,6 +6,7 @@ import Marquee from 'react-fast-marquee';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 import Construction from './_components/underConstruction';
 import LandingAbout from './_components/landingAbout';
+import PageTransition from '@/components/pageTransition';
 
 const About = () => {
   return (

@@ -59,7 +59,7 @@ function CallToAction() {
   return (
     <div className="border-black  border-0 border-solid flex justify-center items-center h-[120vh] w-[100%]">
       <div id="cta" className="pt-10  text-NightFall w-[95%] flex flex-wrap flex-col items-center sm:items-center justify-center align-top">
-        <h1 className="text-4xl sm:text-8xl textC font-Lora  max-w-[75%] leading-loose opacity-1 text-NightFall z-[3] text-center">
+        <h1 className="text-4xl sm:text-8xl textC font-Lora  max-w-[75%] leading-loose opacity-1 text-NightFall z-[2] text-center">
           Ready to turn your ideas into art?
         </h1>
         <Parallax speed={-15} >
@@ -72,7 +72,7 @@ function CallToAction() {
           <div className="bg-[#121b21]  rounded-full h-20 flex justify-center  flex-row items-center  w-96" >
             <motion.div className="flex gap-24 justify-center items-center" id="icons">
               {buttonicons.map((icon, index) => (
-                <motion.div variants={iconVariants} animate={hover ? "hoverIcon" : "normal"} initial="normal" >
+                <motion.div key={index} variants={iconVariants} animate={hover ? "hoverIcon" : "normal"} initial="normal" >
                   <Image src={icon} quality={100} width={100} height={100} alt="Button Icon" />
                 </motion.div>
               ))}

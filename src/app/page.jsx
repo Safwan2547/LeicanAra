@@ -14,6 +14,7 @@ import MouseParallax from '../components/mouseParallax';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import LoadingScreen from '@/components/loading';
 // import NavMenu from '../components/navMenu';
+import PageTransition from '@/components/pageTransition';
 
 import { timeline } from 'motion';
 import { ParallaxProvider } from 'react-scroll-parallax';

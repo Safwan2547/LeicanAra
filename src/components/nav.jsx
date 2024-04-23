@@ -57,9 +57,9 @@ function Navbar() {
             className=" appearance-none  transition-color  ease-expo flex align-baseline items-center justify-between fixed top-8 left-8 right-8 sm:left-5 sm:right-5 sm:top-8 sm:mr-5 sm:ml-5 z-[3]"
         >
             <div onClick={() => toggleNav(false)} className='z-[24]'>
-                <TransitionLink to="/" passHref className={`${navOpen ? "text-NightFall" : "text-NightFall"} opacity-90 navItem antialiased transform transition-button duration-500 hover:scale-110 hover:text-LunarTwilight hover:animate-pulse-slow buttonC font-satoshi-light text-4xl sm:text-4xl ease-in-out cursor-none z-24`}>
+                <Link href="/" passHref className={`${navOpen ? "text-NightFall" : "text-NightFall"} opacity-90 navItem antialiased transform transition-button duration-500 hover:scale-110 hover:text-LunarTwilight hover:animate-pulse-slow buttonC font-satoshi-light text-4xl sm:text-4xl ease-in-out cursor-none z-24`}>
                     LeicanAra
-                </TransitionLink>
+                </Link>
                 <span className={`textP text-3xl font-satoshi-light ${navOpen ? "text-MainBeige" : "text-NightFall"} transition-all duration-500`}>
                     {getNavbarTitle()}
                 </span>

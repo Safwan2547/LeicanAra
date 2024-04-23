@@ -14,6 +14,10 @@ import NoiseOverlay from "@/components/NoiseOverLay";
 import LoadingScreen from "@/components/loading";
 import React from "react";
 
+import { motion, AnimatePresence } from 'framer-motion';
+import Template from "./template";
+
+
 export const metadata = {
   title: 'LeicanAra',
 }
@@ -25,7 +29,7 @@ export default function RootLayout({ children }) {
 
  
   return (
-    <html lang="en">
+    <html className="bg-white" lang="en">
       <body  className="overflow-hidden bg-white">
 
       <Head>
@@ -41,8 +45,10 @@ export default function RootLayout({ children }) {
     
       
        <SmoothScroll horizontal={false}>
-        {/* <NoiseOverlay  /> */}
-          <main>{children}</main>
+       
+
+            <Template>{children}</Template>
+        
         </SmoothScroll>
         <Footer/>
 

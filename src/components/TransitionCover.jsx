@@ -1,30 +1,25 @@
-// TransitionCover.js
+import React, { forwardRef } from 'react';
+import { motion } from 'framer-motion';
 
-import React, { useEffect, useState } from 'react';
+function PageTransition({ children, ...rest }, ref) {
+  const onTheRight = { x: '100%' };
+  const inTheCenter = { x: 0 };
+  const onTheLeft = { x: '-100%' };
 
-const TransitionCover = ({ onTransitionEnd }) => {
-  const [isVisible, setIsVisible] = useState(true);
-    const [display, setDisplay] = useState('block'); // Initialize display state
+  const transition = { duration: 0.6, ease: 'easeInOut' };
 
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-  useEffect(() => {
-    if (opacity === 'opacity-0') {
-      // When opacity reaches 'opacity-0', update display state to 'none'
-      setDisplay('none');
-    }
-  }, [opacity]);
   return (
-    <div
-      className={`fixed top-0 left-0 w-full h-full bg-black transition-opacity duration-1000 z-50 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
-      onTransitionEnd={onTransitionEnd}
-    />
+    <motion.div
+      ref={ref}
+      initial={onTheRight}
+      animate={inTheCenter}
+      exit={onTheLeft}
+      transition={transition}
+      {...rest}
+    >
+      {children}
+    </motion.div>
   );
-};
+}
 
-export default TransitionCover;
+export default forwardRef(PageTransition);

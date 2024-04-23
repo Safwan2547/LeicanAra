@@ -7,6 +7,7 @@ import Marquee from 'react-fast-marquee'
 
 import Image from 'next/image';
 import duration from 'tailwindcss-animated/src/utilities/duration';
+import  Link from 'next/link';
 
 const SubNavBar = () => {
     // Add your social media links here
@@ -52,8 +53,8 @@ const NavMenu = ({ navOpen, toggleNav }) => {
       }
     const childVarients = (index) =>({
         overlayOpen: {
-            clipPath: 'circle(130.0% at 50% 0)', y: 0,scale:1, transition: {
-                duration:0.7,
+            clipPath: 'circle(200.0% at 100% 50%)', x: 0,scale:1, transition: {
+                duration:1,
                  delay: (0.2 * index)+0.1 ,
                 type: 'spring',   // Using spring type for transition
                 stiffness: 100,   // Control of the spring stiffness
@@ -61,8 +62,8 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                 mass: 1,          // Mass of the element being animated} 
             },},
         overlayClose: {
-            clipPath: 'circle(0% at 50% 0)', y: 100, scale: 0.5, transition: {
-                duration: 0.8,
+            clipPath: 'circle(0% at 100% 50%)', x: 100, scale: 0.5, transition: {
+                duration: 1,
                 delay: 0,
                 type: 'spring',   // Using spring type for transition
                 stiffness: 100,   // Control of the spring stiffness
@@ -107,9 +108,11 @@ const NavMenu = ({ navOpen, toggleNav }) => {
                         {menuItems.map((item, index) => (
                             <motion.div key={index} animate={controls} variants={childVarients(index)} className="menu-item" onClick={() => toggleNav(false)}>
                                 <p className='font-satoshi-light text-sm p-2 opacity-20'>{item.label}</p>
-                                <TransitionLink to={item.url} className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
+                                <Link href={item.url} >
+                                    <div className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
                                     <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'>{item.name}</Marquee>
-                                </TransitionLink>
+                                    </div>
+                                </Link>
                             </motion.div>
                         ))}
                     </motion.div>

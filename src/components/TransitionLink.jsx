@@ -16,7 +16,7 @@ const TransitionLink = ({ to, children, className }) => {
     setIsTransitioning(true);
   
     // Animate the opacity of the entire page to 0
-    await animate(document.documentElement, { opacity: 0 }, { duration: 1 }).finished;
+    await animate(document.documentElement, { opacity: 0 }, { duration:1 }).finished;
   
     // Ensure the window scrolls to the top before navigating
     window.scrollTo(0, 0);
@@ -25,7 +25,7 @@ const TransitionLink = ({ to, children, className }) => {
       // Navigate to the new route
       await router.push(to);
       // If navigation is successful, animate opacity back to 1
-      animate(document.documentElement, { opacity: 1 }, { duration: 1 });
+      animate(document.documentElement, { opacity: 1 }, { delay:1,duration: 1 });
     } catch (error) {
       console.error("Failed to navigate:", error);
     }

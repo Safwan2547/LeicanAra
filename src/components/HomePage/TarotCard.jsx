@@ -15,17 +15,17 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
     const CARD_WIDTH = 350;
     
     const cardVarient = {
-        reset: { y:"100%", scale:0, transition: {  duration: 0.8, // Duration of the animation
+        reset: { y:"100%", scale:0, transition: {  duration: 1, // Duration of the animation
         ease: "anticipate", // Custom easing function
 
     }},
         start: {
             y: "10%", scale: 1, transition: {
-                duration: 1,
+                duration: 1.2,
                  // Duration of the animation
                 type: "spring", // Animation type for a smooth effect
-                damping: 15, // Damping effect
-                stiffness: 200, // Stiffness of the spring animation 
+                damping: 20, // Damping effect
+                stiffness: 175, // Stiffness of the spring animation 
             },
 
     }};
@@ -50,14 +50,14 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
  
 
     useEffect(() => {
-
+        //After a card is flipped, set a timeout to flip it back
         if (cardFlipped) {
 
             setTimeout(() => {
                 setCardFlipped(false);
 
                 controls.start(["reset"]);
-            }, 7000);
+            }, 10000);
         }
         
     },[cardFlipped]);
