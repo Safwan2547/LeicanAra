@@ -52,7 +52,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
 
     const menuItems=[
         {label:'Who we are',url:'/about',name:'Info'},
-        {label:'What we have been working on!',url:'/projects',name:'Projects'},
+        {label:'What we have been working on!',url:'/projects',name:'Work'},
         {label:'Say Hi!',url:'/contact',name:'Contact'},
     ]
 
@@ -61,9 +61,9 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
         overlayClose: { x: "100%", transition: { duration: 0.8, ease: "circInOut"} },
         
     };
-    const overLayVariants = {
-        initiateOverlay: { opacity: 0.2, transition: { delay: 1, duration: 2, ease: "linear" } },
-        closeOverlay: { opacity: 0, transition: { delay: 1, duration: 2, ease: "easeInOut" } }
+    const Background = {
+        overlayOpen: { opacity: 0.2, transition: { delay: 0, duration: 0.5, ease: "easeInOut" } },
+        overlayClose: { opacity: 0, transition: { delay: 0, duration: 0.5, ease: "easeInOut" } }
       }
 
     const aboutCardVariants = {
@@ -167,9 +167,13 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
 }, [navOpen, controls,menuState]);
 
     return (
+        <div>
+            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay fixed w-screen h-screen bg-black  top-0 left-0`}></motion.div>
+
         <motion.div initial={{x:"100%"}}
         animate={controls} variants={navVariants} className={`overflow-hidden z-[13] overlay no-scrollbar::-webkit-scrollbar  text-center top-0 left-0 w-screen h-screen fixed  `}>
-            <motion.div className=' font-satoshi-light '>
+
+            <motion.div className=' font-satoshi-light z-[14]'>
 
               
 
@@ -204,6 +208,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
                 </div>
             </motion.div>
         </motion.div>
+        </div>
     );
 };
 

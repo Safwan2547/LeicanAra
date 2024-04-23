@@ -27,11 +27,12 @@ function Navbar() {
     };
     const buttonAnimation = {
         hidden: {
-            y: 0, transition: { duration: 0.5 } // 1.5 second delay
+            y: 0, 
+            transition: { ease: "circInOut",duration: 0.1 } 
  },
         visible: {
             y:-85,
-            transition: { ease: "circInOut",  duration: 0.5 } // 1.5 second delay
+            transition: { ease: "circInOut",  duration: 0.5 } 
         }
     };
     const toggleNav = (mod) => {
@@ -106,7 +107,7 @@ function Navbar() {
 
             </button>
             
-                <motion.button initial={["hidden"]} animate={controls} variants={buttonAnimation} className={`hover:scale-100 scale-90 absolute duration-1000 transition-all  hover:bg-opacity-100 hover:backdrop-blur-none  h-10 w-10 group ${menuState ? "bg-LunarDawn opacity-100 block" : "opacity-0  "} rounded-full  justify-center items-center sm:rotate-90  navItem   hover:scale-105 buttonC  buttonC font-Satoshi text-xl rotate-[120deg] font-light cursor-none text-MainBeige`} onClick={() => handleMenuStateClick()}>&#9830;</motion.button>
+                <motion.button initial={["hidden"]} animate={controls} variants={buttonAnimation} className={`hover:scale-100 scale-90 absolute duration-1000 transition-all  hover:bg-opacity-100 hover:backdrop-blur-none  h-10 w-10 group ${menuState ? "bg-LunarDawn opacity-100 block" : "opacity-0  "} rounded-full  justify-center items-center sm:rotate-90  navItem   hover:scale-105 buttonC  buttonC font-Satoshi text-xl rotate-[120deg] font-light cursor-none text-MainBeige`} onClick={() => handleMenuStateClick()}>&uarr;</motion.button>
             </div>
 
             <NavMenu navOpen={navOpen} menuState={menuState} setMenuState={setMenuState} toggleNav={toggleNav} />

@@ -15,7 +15,6 @@ import LoadingScreen from "@/components/loading";
 import React from "react";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import Template from "./template";
 
 
 export const metadata = {
@@ -49,7 +48,7 @@ export default function RootLayout({ children }) {
        <SmoothScroll horizontal={false}>
        
 
-            <Template>{children}</Template>
+            <main>{children}</main>
         
         </SmoothScroll>
         <Footer/>

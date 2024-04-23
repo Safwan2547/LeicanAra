@@ -12,8 +12,8 @@ function AboutCard(props){
     const controls=useAnimationControls();
 
     const aboutCardVariants = {
-        hidden: { clipPath: 'circle(0% at 50% 100%)', transition: { ease: "circInOut", duration: 0.6 } },
-        visible: { clipPath: 'circle(200% at 50% 100%)', transition: { ease: "circInOut", duration: 1 } }
+        hidden: { clipPath: 'ellipse(0% 0% at 50% 100%)', transition: { ease: "circInOut", duration: 0.6 } },
+        visible: { clipPath: 'ellipse(300% 120% at 50% 100%)', transition: { ease: "circInOut", duration: 1 } }
     };
     const floatVarient = {
         childOpen: { y: [0, 10, 0], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
@@ -74,11 +74,12 @@ function AboutCard(props){
 
             </motion.div >
             </div>
+            <div className='h-[80%] w-full flex justify-center items-start flex-col'>
         <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className='flex flex-col mt-12 text-start justify-start  w-1/2'>
             <h1 className='text-6xl'>About</h1>
         </motion.div>
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className=' mt-4 w-2/3 text-start '>
-                <h2 className='text-2xl  pl-4 leading-normal'>LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. </h2>
+                <h2 className='text-2xl  pl-2 leading-normal'>LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. </h2>
                  </motion.div>
 
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(0)} className=' mt-8 w-2/3 text-start '>
@@ -89,13 +90,16 @@ function AboutCard(props){
                 <ul className='text-2xl pl-10 list-disc gap-4'>
                     <li className='mt-2'>Branding</li>
                     <li className='mt-2'>Graphic Design</li>
+                    <li className='mt-2'>Art Direction</li>
                     <li className='mt-2'> Brand Management</li>
-                    <li className='mt-2'>Ui/Ux</li>
+                    <li className='mt-2'>Ui Design</li>
                     <li className='mt-2'>Web Design</li>
+                    
 
 
                 </ul>
             </motion.div>
+            </div>
         </motion.div >
     )
 

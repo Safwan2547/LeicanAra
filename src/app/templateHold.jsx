@@ -79,7 +79,7 @@ export default function Template({ children }) {
     return (
         <>
             {/* <Curtain isVisible={curtainVisible} pathname={pathname} /> */}
-            <AnimatePresence className="bg-black" mode="wait" initial={false}>
+            <AnimatePresence className="bg-black" mode="wait" initial={true}>
                 <motion.div
                     key={pathname} // Use pathname as the key
                     variants={pageTransitionVariants}
