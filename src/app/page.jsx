@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 
 import LandingPage from '../components/HomePage/landing';
 
@@ -22,7 +22,9 @@ import TarotSection from '@/components/HomePage/TarotSection';
 
 function HomePage() {
 
-  const loadingTime=0;
+  const loadingTime=2;
+  const [loadState, setloadState] = useState(true);
+
   
 
 
@@ -37,7 +39,7 @@ function HomePage() {
     <ParallaxProvider>
       
 
-      <LoadingScreen loadingTime={loadingTime} />
+      <LoadingScreen loadingTime={loadingTime} loadState={loadState} setState={setloadState}  />
 
       
     <div 
@@ -48,7 +50,7 @@ function HomePage() {
 
        
             
-            <LandingPage loadingTime={loadingTime}/>      
+            <LandingPage loadState={loadState} loadingTime={loadingTime}/>      
             <Introductory/>
            
         <ProjectGrid  projects={projects} />

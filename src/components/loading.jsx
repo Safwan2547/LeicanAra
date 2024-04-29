@@ -1,83 +1,42 @@
 "use client";
-
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLoader } from './loadStateContext';
 
-function LoadingScreen(props) {
-  const [show, setShow] = useState(true);
-  
+function LoadingScreen({ loadingTime,setState }) {  // Default loading time of 2 seconds
 
-  const words = "Stories bind us like strings".split(" ");
-  const { loadingTime } = props;
-
-  // Log loading time when it changes
-  useEffect(() => {
-    console.log("loadingTime=" + loadingTime);
-  }, [loadingTime]);
+  const {loadState,setloadState}= useLoader();
 
   useEffect(() => {
-    setTimeout(() => {
-      setShow(false);
-    }, props.loadingTime * 1000);
-  }, []);
-  // Animation variants for each word
-  const variants = {
-    hidden: { clipPath: "circle(0% at 0% 0%)",y:0, scale: 0.9 },
-    visible: i => ({
-      clipPath: "circle(150% at 0% 0%)",
-      scale: 1,
-      y: -1000,
-      transition: {
-        clipPath: {
-          duration: loadingTime / 2,
-          ease: "anticipate",
-        },
-        y: {
-          duration: loadingTime*0.4,
-          delay: loadingTime /2,
-          ease: "circInOut",
-        },
-        scale: {
-          duration: loadingTime * 0.7,
-          ease: "circInOut",
-        }
-      },
-    }),
-  };
+    console.log("loadState" + loadState)
+    const timer = setTimeout(() => {
+      setloadState(false);
+      console.log("loadState" + loadState)
 
-  if (loadingTime===0) return null;
+    }, loadingTime * 1000);
 
-  if (!show) return null;
+    return () => clearTimeout(timer);
+  }, [loadState]);
 
+  if (!loadState) return null;
 
   return (
-    <div className='bg-white h-screen fixed z-[100] w-screen'>
-    <motion.div
-      initial={{backgroundColor:"#141414" }}
-      animate={{
-        
-        backgroundColor: "#ffffff",
-        transition: {
-          duration: loadingTime / 3,
-          delay: loadingTime/2,
-          ease: "easeInOut"
-        }
-      }}
-      className="flex  z-[100] bg-white w-screen justify-center items-center h-screen"
-    >
-      <motion.h1
-        variants={variants}
-        initial="hidden"
-        animate="visible"
-        className="text-center text-8xl font-satoshi-light text-MainBeige"
-      >
-        {words.map((word, index) => (
-          <motion.span key={index} custom={index} className="mr-4">
-            {word}
-          </motion.span>
-        ))}
-      </motion.h1>
-    </motion.div>
+    <div className='bg-white h-screen fixed z-50 w-screen flex justify-center items-center'>
+      <motion.div initial={{
+        opacity:0,
+        y:50}
+      }
+        animate={{
+          opacity: 1,
+          scale:[0.8,1],  // Animate to full opacity
+          y: 0,        // Animate to y-axis 0 position
+          transition: {
+            duration: 1,  // Duration for the animation
+            ease: "circInOut"  // Easing function for the animation
+          }
+        }} >
+        <h1 className='text-8xl font-Lora'>Stories bind us like strings</h1>
+      </motion.div>
     </div>
   );
 }

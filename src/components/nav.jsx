@@ -9,6 +9,7 @@ import "../app/globals.css";
 import NavMenu from './NavMenu';
 import TransitionLink from './TransitionLink';
 import duration from 'tailwindcss-animated/src/utilities/duration';
+import { useLoader } from './loadStateContext';
 
 function Navbar() {
     const [navOpen, setNavOpen] = useState(false);
@@ -16,13 +17,14 @@ function Navbar() {
     const [animating, setAnimating] = useState(false);
     const [menuState,setMenuState]=useState(false);
     const controls = useAnimationControls();
+    const {loadState,setLoadState} = useLoader();
 
     // Animation controls for navbar
     const navbarAnimation = {
-        hidden: { opacity: 0 },
-        visible: {
+        initialNav: { opacity: 0 },
+        showNav: {
             opacity: 1,
-            transition: { delay: 2 } // 1 second delay
+            transition: { delay: 1 } // 1 second delay
         }
     };
     const buttonAnimation = {
@@ -87,6 +89,13 @@ function Navbar() {
 
         }},[menuState]);
 
+    useEffect(() => {
+        if (!loadState) {  // When loadState is false, trigger the animation
+            controls.start("showNav");
+        } 
+        console.log("loadState at Nav" + loadState);
+    }, [loadState, controls]);
+
     
 
     const getNavbarTitle = () => {
@@ -102,8 +111,8 @@ function Navbar() {
 
     return (
         <motion.nav
-            initial="hidden"
-            animate="visible"
+            initial="initialNav"
+            animate={controls}  
             variants={navbarAnimation}
             className=" appearance-none  transition-color  ease-expo flex align-baseline items-center justify-between fixed top-8 left-8 right-8 sm:left-5 sm:right-5 sm:top-8 sm:mr-5 sm:ml-5 z-[3]"
         >

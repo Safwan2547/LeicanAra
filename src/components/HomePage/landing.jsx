@@ -5,6 +5,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 import ImageFloater from '../imageFloater';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 import delay from 'tailwindcss-animated/src/utilities/delay';
+import { useLoader } from '../loadStateContext';
 
 function LandingPage(props) {
   const controls = useAnimation();
@@ -12,8 +13,8 @@ function LandingPage(props) {
   const lenis = useLenis();
   const [playVideo, setPlayVideo] = useState(false);  // State to control video playback
   const videoRef = useRef(null);  // Create a ref for the video element
-
   const {loadingTime} = props;
+  const {loadState,setLoadState} = useLoader();
 
 
   const handleClick = () => {
@@ -28,26 +29,25 @@ function LandingPage(props) {
 
  useEffect(() => {
    setTimeout(() => {
-     if (videoRef.current) {
+     if (loadState) {
        videoRef.current.play();  // Manually play the video
      }},loadingTime*1000+1)
 
-   console.log("loading time made it to page " + loadingTime)
 
+    
+  }, [controls,controlsHeader]);
+
+  useEffect(() => {
     const sequence = async () => {
-      // Trigger animations in a sequence using `await`
-      
-      await controls.start({ opacity: 1, scale: 1  }, { transition: { delay:0.5 } });
-      
-      await controlsHeader.start({ clipPath: "circle(150% at 0% 0)", scale: 1 });
-      controlsHeader.start({ color: "#141414" }, { transition: { delay:loadingTime+2 } });
-
-      
-
+      if (!loadState) {
+        await controls.start({ opacity: 1, scale: 1 }, { transition: { delay: 0.5 } });
+        await controlsHeader.start({ clipPath: "circle(150% at 0% 0)", scale: 1 });
+        controlsHeader.start({ color: "#141414" }, { transition: { delay: loadingTime + 2 } });
+      }
     };
 
     sequence();
-  }, [controls,controlsHeader]);
+  }, [controls, controlsHeader, loadState, loadingTime]);
  
   return (
     
