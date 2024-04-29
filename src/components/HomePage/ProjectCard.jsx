@@ -71,7 +71,7 @@ const ProjectCard = ({ project }) => {
               ) : (
                 !isMobile && project.type === 'image' ? (
                   
-                    <motion.img  src={project.thumbnail} loading='lazy' alt={project.alt} fetchPriority="low"  className="object-cover overflow-hidden max-w-full aspect-[1/2] peer-hover:scale-125 relative sm:w-[60vw] sm:h-[30vw] transition-all duration-1000 ease-in-out z-2" />
+                    <motion.img  src={project.thumbnail} loading='lazy' alt={project.alt} fetchPriority="low"  className="object-cover rounded-lg overflow-hidden max-w-full aspect-[1/2] peer-hover:scale-125 relative sm:w-[60vw] sm:h-[30vw] transition-all duration-1000 ease-in-out z-2" />
              
                 ) : (
                   <motion.video alt={project.alt} loading="lazy" muted autoPlay loop fetchPriority="low" className={`transition-all duration-[600ms] ${isHovered ? 'opacity-100 scale-[120%]' : 'scale-[100%]'}`}>

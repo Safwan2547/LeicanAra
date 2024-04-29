@@ -16,8 +16,8 @@ function AboutCard(props){
         visible: { clipPath: 'ellipse(300% 120% at 50% 100%)', transition: { ease: "circInOut", duration: 1 } }
     };
     const floatVarient = {
-        childOpen: { y: [0, 10, 0], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
-        childOpen: { y: 0, transition: { duration: 1, ease: "circInOut" } }
+        childOpen: { y: [0, 10, 0],scale:[1,0.9,1], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
+        childClose: { y: 0, transition: { duration: 1, ease: "circInOut" } }
     }
 
     const childVarient= (index)=>({
@@ -78,7 +78,7 @@ function AboutCard(props){
         <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className='flex flex-col mt-12 text-start justify-start  w-1/2'>
             <h1 className='text-6xl'>About</h1>
         </motion.div>
-            <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className=' mt-4 w-2/3 text-start '>
+            <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className=' mt-4 max-w-[80%] text-start '>
                 <h2 className='text-2xl  pl-2 leading-normal'>LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. </h2>
                  </motion.div>
 

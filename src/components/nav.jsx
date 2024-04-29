@@ -27,12 +27,27 @@ function Navbar() {
     };
     const buttonAnimation = {
         hidden: {
-            y: 0, 
-            transition: { ease: "circInOut",duration: 0.1 } 
+            y: 0,
+            height:"4rem", 
+            backgroundColor: "#efece3",
+            opacity:0,
+            transition: { ease: "anticipate",duration: 1,
+                backgroundColor: { duration: 0.5, ease: "easeInOut" },
+                opacity:{delay:2}
+
+            
+        
+        } 
  },
         visible: {
             y:-85,
-            transition: { ease: "circInOut",  duration: 0.5 } 
+            height:"2.5rem",
+            backgroundColor: "#21323e",
+              opacity:1,
+            transition: { ease: "circInOut",  duration: 1,
+                height: { duration: 0.7, ease: "anticipate" },
+                backgroundColor: { duration: 0.5, ease: "easeInOut" }
+            } 
         }
     };
     const toggleNav = (mod) => {
@@ -106,8 +121,15 @@ function Navbar() {
                     <div className={`  buttonC cursor-none h-[0.2rem] ${navOpen && !menuState ? "bg-LunarDawn  " : "  bg-MainBeige "} ${navOpen ? "rotate-[315deg] w-10" : "w-8 -translate-y-1"} rounded-lg ease-in-out absolute transition-all duration-1000 `}></div>
 
             </button>
-            
-                <motion.button initial={["hidden"]} animate={controls} variants={buttonAnimation} className={`hover:scale-100 scale-90 absolute duration-1000 transition-all  hover:bg-opacity-100 hover:backdrop-blur-none  h-10 w-10 group ${menuState ? "bg-LunarDawn opacity-100 block" : "opacity-0  "} rounded-full  justify-center items-center sm:rotate-90  navItem   hover:scale-105 buttonC  buttonC font-Satoshi text-xl rotate-[120deg] font-light cursor-none text-MainBeige`} onClick={() => handleMenuStateClick()}>&uarr;</motion.button>
+                
+                <motion.button
+                    whileHover={{
+                        scale: 1.2,
+                        transition: { duration: 0.5, ease: "easeInOut"},
+                    }}
+                
+                initial={["hidden"]} animate={controls} variants={buttonAnimation} className={`   absolute    h-10 w-10    rounded-full  justify-center items-center   navItem   buttonC  font-Satoshi text-2xl  font-light cursor-none text-MainBeige`} onClick={() => handleMenuStateClick()}>&uarr;</motion.button>
+                
             </div>
 
             <NavMenu navOpen={navOpen} menuState={menuState} setMenuState={setMenuState} toggleNav={toggleNav} />

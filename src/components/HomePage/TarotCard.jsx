@@ -21,11 +21,11 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
     }},
         start: {
             y: "10%", scale: 1, transition: {
-                duration: 1.2,
+                duration: 2,
                  // Duration of the animation
                 type: "spring", // Animation type for a smooth effect
-                damping: 20, // Damping effect
-                stiffness: 175, // Stiffness of the spring animation 
+                damping: 8, // Damping effect
+                stiffness: 30, // Stiffness of the spring animation 
             },
 
     }};
@@ -67,7 +67,7 @@ const TarotCard = ({ src, header, text,ParallaxStr }) => {
     return (
         <Parallax speed={(ParallaxStr+1)*10} scale={[0.9,1]} y={[10,-10]} >
         <motion.div 
-            className="card   hover:scale-110 transition-all    flex  relative  duration-500 justify-center items-center"
+            className="card   hover:scale-110 transition-all  flex  relative  duration-500 justify-center items-center"
             onClick={toggleFlip}
             style={{ width: `${CARD_WIDTH}px`, height: `${CARD_HEIGHT}px` }}
 

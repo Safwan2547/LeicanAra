@@ -49,6 +49,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     const controls = useAnimationControls();
     const customEase = cubicBezier(.08, .91, .45, 1);
     const lenis =useLenis();
+    const [navOverlayHide, setNavOverlayHide] = useState("hidden");
 
     const menuItems=[
         {label:'Who we are',url:'/about',name:'Info'},
@@ -118,7 +119,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     });
 
     const floatVarient ={
-        overlayOpen: { y: [0, 5,0], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
+        overlayOpen: { y: [0, 10, 0], scale: [1, 0.9, 1], transition: { repeat: Infinity, duration: 5, ease: "easeInOut" } },
         overlayClose: { y: 0, transition: { duration: 1, ease: "circInOut" }}
     }
     const handleMenuItemClick = (item) => {
@@ -147,11 +148,16 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     if (navOpen) {
         controls.start(["overlayOpen"])
         controls.start(["childOpen"])
+        setNavOverlayHide("fixed");
+        
 
 
     } else {
         controls.start(["overlayClose"]);
                     setMenuState(false); // Automatically close the About card when the nav closes
+        setTimeout(() => {
+            setNavOverlayHide("hidden");
+        }, 1000);
 
 
 
@@ -168,12 +174,13 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
 
     return (
         <div>
-            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay fixed w-screen h-screen bg-black  top-0 left-0`}></motion.div>
+            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay ${navOverlayHide}   w-screen h-screen bg-black  top-0 left-0`}></motion.div>
 
         <motion.div initial={{x:"100%"}}
         animate={controls} variants={navVariants} className={`overflow-hidden z-[13] overlay no-scrollbar::-webkit-scrollbar  text-center top-0 left-0 w-screen h-screen fixed  `}>
-
+                <div onClick={() => toggleNav()} className='h-full w-full '></div>
             <motion.div className=' font-satoshi-light z-[14]'>
+
 
               
 
@@ -195,8 +202,8 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
                             <motion.div key={index} animate={controls} variants={childVarients(index)} className="menu-item" onClick={() => handleMenuItemClick(item)}>
                                 <p className='font-satoshi-light text-sm p-2 opacity-20'>{item.label}</p>
                                 
-                                    <div className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
-                                    <Marquee speed={15} className='border-x border-x-white border-opacity-[0.4]'>{item.name}</Marquee>
+                                    <div className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out overflow-hidden transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
+                                    <Marquee speed={15} className='border-x border-x-white overflow-hidden border-opacity-[0.4]'>{item.name}</Marquee>
                                     </div>
                                 
                             </motion.div>
