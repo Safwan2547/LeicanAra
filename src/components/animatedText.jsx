@@ -3,10 +3,11 @@
 import React,{useEffect,useRef} from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const letterAnimations = (charIndex) => ({
-    hidden: { opacity: 1, y: 100, rotateX: "-90deg", skewX: "45deg", scale: 1 },
+const letterAnimations = (charIndex,smallText) => ({
+    hidden: { opacity: 1, y: smallText? 20:100,  rotateX: "-90deg", skewX: "45deg", scale: 1 },
     visible: {
         opacity: 1,
+        blur:0,
         y: 0,
         scale: 1,
         skewX: 0,
@@ -14,8 +15,8 @@ const letterAnimations = (charIndex) => ({
         transition: {
             duration: 0.1,
             type: "spring",
-            stiffness: 50,
-            mass: 1,
+            stiffness: smallText?80:50,
+            mass: smallText?0.7:1,
             delay: charIndex * 0.05
         }
     }
@@ -29,10 +30,10 @@ const wordVariants = {
     }
 };
 
-const AnimatedText = ({ text, className, scrollRef,once }) => {
+const AnimatedText = ({ text, className,smallText, scrollRef,once }) => {
     const words = text.split(" ");
     const ref =useRef(null);
-    
+    smallText=smallText?smallText:false;
     const inView=useInView(ref,{once:once==false?false:true,threshold:0.5});
 
 
@@ -50,7 +51,7 @@ const AnimatedText = ({ text, className, scrollRef,once }) => {
                     {Array.from(word).map((char, charIndex) => (
                         <motion.span key={charIndex}
                             className='inline-block'
-                            variants={letterAnimations(charIndex)}
+                            variants={letterAnimations(charIndex,smallText)}
                         >
                             {char}
                         </motion.span>

@@ -25,7 +25,7 @@ function CallToAction() {
       transition: {
         duration: 0.3, // Duration of the animation
         type: "spring", // Animation type for a smooth effect
-        stiffness: 300, // Stiffness of the spring animation
+        stiffness: 150, // Stiffness of the spring animation
       },
     },
     normal: {
@@ -34,7 +34,7 @@ function CallToAction() {
       transition: {
         duration: 0.3, // Duration of the animation
         type: "spring", // Animation type for a smooth effect
-        stiffness: 300, // Stiffness of the spring animation
+        stiffness:150 , // Stiffness of the spring animation
       },
     },
   };
@@ -42,17 +42,20 @@ function CallToAction() {
     normal: {
       scale: 0.5,
       y: 0,
+      rotateX:"-90deg",
+      
       transition: {
         type: "spring",
-        stiffness: 300,
+        stiffness: 100,
       }
     },
     hoverIcon: {
       scale: 1,
       y: -40,
+      rotateX:"0deg",
       transition: {
         type: "spring",
-        stiffness: 300,
+        stiffness: 100,
       }
     },
   };

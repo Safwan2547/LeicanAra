@@ -10,6 +10,7 @@ import duration from 'tailwindcss-animated/src/utilities/duration';
 import  Link from 'next/link';
 import {useLenis} from '@studio-freight/react-lenis';
 import AboutCard from './aboutCard';
+import AnimatedText from './animatedText';
 
 const SubNavBar = (props) => {
     // Add your social media links here
@@ -32,7 +33,7 @@ const SubNavBar = (props) => {
     return (
         <div className={`menu-item subnav-bar flex  ${visible?"opacity-100":"opacity-0" } transition-opacity duration-1000 absolute bottom-14 z-[1] justify-center gap-8`}>
             {socialMediaLinks.map((link, index) => (
-                <a key={index} href={link.url} className="subnav-link text-MainBeige buttonC font-satoshi-light hover:scale-110 duration-500 cursor-pointer hover:animate-pulse  text-lg transition-all">{link.name}</a>
+                <a key={index} href={link.url} className="subnav-link text-MainBeige buttonC font-satoshi-light hover:scale-110 duration-500 cursor-pointer hover:animate-pulse  text-lg transition-all"><AnimatedText text={link.name} smallText={true} once={false} /></a>
             ))}
         </div>
     );
@@ -63,7 +64,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
         
     };
     const Background = {
-        overlayOpen: { opacity: 0.2, transition: { delay: 0, duration: 0.5, ease: "easeInOut" } },
+        overlayOpen: { opacity: 1, transition: { delay: 0, duration: 0.5, ease: "easeInOut" } },
         overlayClose: { opacity: 0, transition: { delay: 0, duration: 0.5, ease: "easeInOut" } }
       }
 
@@ -174,7 +175,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
 
     return (
         <div>
-            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay ${navOverlayHide}   w-screen h-screen bg-black  top-0 left-0`}></motion.div>
+            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay ${navOverlayHide} backdrop-blur-sm bg-opacity-10 bg-NightFall  w-screen h-screen   top-0 left-0`}></motion.div>
 
         <motion.div initial={{x:"100%"}}
         animate={controls} variants={navVariants} className={`overflow-hidden z-[13] overlay no-scrollbar::-webkit-scrollbar  text-center top-0 left-0 w-screen h-screen fixed  `}>
@@ -203,7 +204,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
                                 <p className='font-satoshi-light text-sm p-2 opacity-20'>{item.label}</p>
                                 
                                     <div className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out overflow-hidden transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
-                                    <Marquee speed={15} className='border-x border-x-white overflow-hidden border-opacity-[0.4]'>{item.name}</Marquee>
+                                    <Marquee speed={15} className='border-x border-x-white overflow-hidden border-opacity-[0.4]'><AnimatedText text={item.name} once={false} smallText={true} /></Marquee>
                                     </div>
                                 
                             </motion.div>
