@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll,useInView } from 'framer-motion';
 import { Parallax,ParallaxBanner } from 'react-scroll-parallax';
 import Image from 'next/image';
+import AnimatedText from '../animatedText';
 
 // Ensure all used components and hooks are correctly imported
 function Introductory() {
@@ -17,7 +18,7 @@ function Introductory() {
 
   const isInView = useInView(scrollRef,
     {
-      amount: 0.9,
+      amount: 0.5,
       once: true,
     });
 
@@ -30,15 +31,12 @@ function Introductory() {
 
   return (
     <section id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col py-48 mt-24 items-start">
-      <motion.div ref={scrollRef} className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
+      <motion.div  className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
       <Parallax easing={""} scale={[0.9,1]}  speed={10} className='' >
-        <motion.h1 className='text-MainBeige  text-[15rem] font-Lora font-bold' initial={{ opacity: 1 }}
-            animate={{ opacity: isInView ? 1 : 1 }}
-            transition={{ duration: 1 }}
-            
-            >
-          We Create Evocative Brands
-        </motion.h1>
+        
+          <AnimatedText className={'text-MainBeige  text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
+       
+       
         <div className='w-full flex justify-end items-center'>
           <motion.p className='text-MainBeige  indent my-24 max-w-[35rem]  pl-4 leading-normal text-right text-xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 1 }}
             animate={{ opacity: isInView ? 1 : 1 }}

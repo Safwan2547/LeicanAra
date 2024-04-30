@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, useAnimationControls, cubicBezier, stagger } from 'framer-motion';
 import Image from 'next/image';
+import AnimatedText from './animatedText';
 
 
 
@@ -76,14 +77,14 @@ function AboutCard(props){
             </div>
             <div className='h-[80%] w-full flex justify-center items-start flex-col'>
         <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className='flex flex-col mt-12 text-start justify-start  w-1/2'>
-            <h1 className='text-6xl'>About</h1>
+                    <AnimatedText className='text-6xl leading-normal' once={false} text="About" />
         </motion.div>
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className=' mt-4 max-w-[80%] text-start '>
                 <h2 className='text-2xl  pl-2 leading-normal'>LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. </h2>
                  </motion.div>
 
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(0)} className=' mt-8 w-2/3 text-start '>
-                <h2 className='text-6xl leading-normal'> Capabilities </h2>
+                <AnimatedText className='text-6xl leading-normal' once={false} text="Capabilities"  />
             </motion.div>
 
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(0)} className='  w-2/3 text-start '>

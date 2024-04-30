@@ -3,6 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import TransitionLink from '../TransitionLink';
 import { useInView } from 'framer-motion';
 import { Parallax,ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
+import AnimatedText from '../animatedText';
 
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -85,8 +86,8 @@ const ProjectCard = ({ project }) => {
         </div>
         <div data-scroll data-scroll-speed="1.5" data-scroll-offset={[30, -10]} className=" z-3 group sm:mt-12 flex justify-center items-center w-full absolute">
         <Parallax className=' ' easing={"easeInOutCirc"} translateY={[30, -10]} speed={50}>
-          <motion.p animate={titleAnimation} className={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize text-center `} >{
-            isMobile === true ? (project.mainHeaderMobile) : (project.title)}</motion.p>
+            <AnimatedText once={false} className={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize text-center `} text={project.title} />
+          
           </Parallax>
         </div>
         <div className=' flex items-end justify-end absolute bottom-10 mb-24 inset-y-12 inset-x-16'  data-scroll data-scroll-speed="3.5" data-scroll-offset="20%,30%">
