@@ -31,7 +31,7 @@ function LandingPage(props) {
    setTimeout(() => {
      if (loadState) {
        videoRef.current.play();  // Manually play the video
-     }},loadingTime*1000+1)
+     }},(loadingTime*1000)+100)
 
 
     
