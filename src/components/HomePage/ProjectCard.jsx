@@ -86,7 +86,7 @@ const ProjectCard = ({ project }) => {
         </div>
         <div data-scroll data-scroll-speed="1.5" data-scroll-offset={[30, -10]} className=" z-3 group sm:mt-12 flex justify-center items-center w-full absolute">
         <Parallax className=' ' easing={"easeInOutCirc"} translateY={[30, -10]} speed={50}>
-            <AnimatedText once={false} className={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize text-center `} text={project.title} />
+            <AnimatedText once={false} classP={` ${isMobile === true ? (project.textColorMobile) : (project.textColor)} font-satoshi-semibold w-full text-6xl text-pretty lg:text-[14rem] sm:text-[10rem] capitalize flex justify-center items-center text-center`} text={project.title} />
           
           </Parallax>
         </div>

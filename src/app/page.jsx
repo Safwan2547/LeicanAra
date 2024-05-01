@@ -22,7 +22,7 @@ import TarotSection from '@/components/HomePage/TarotSection';
 
 function HomePage() {
 
-  const loadingTime=3;
+  const loadingTime=2;
   const [loadState, setloadState] = useState(true);
 
   

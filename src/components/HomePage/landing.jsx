@@ -6,6 +6,7 @@ import ImageFloater from '../imageFloater';
 import { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 import delay from 'tailwindcss-animated/src/utilities/delay';
 import { useLoader } from '../loadStateContext';
+import AnimatedText from '../animatedText';
 
 function LandingPage(props) {
   const controls = useAnimation();
@@ -15,6 +16,8 @@ function LandingPage(props) {
   const videoRef = useRef(null);  // Create a ref for the video element
   const {loadingTime} = props;
   const {loadState,setLoadState} = useLoader();
+
+  const [cueAnimations,setCueAnimations] = useState(false);
 
 
   const handleClick = () => {
@@ -42,6 +45,8 @@ function LandingPage(props) {
       if (!loadState) {
         await controls.start({ opacity: 1, scale: 1 }, { transition: { delay: 0.5 } });
         await controlsHeader.start({ clipPath: "circle(150% at 0% 0)", scale: 1 });
+        setCueAnimations(true);
+
         controlsHeader.start({ color: "#141414" }, { transition: { delay: loadingTime + 2 } });
       }
     };
@@ -77,15 +82,16 @@ function LandingPage(props) {
         <Parallax easing={""}  scale={[1,1.2]} speed={10} >
           
           <motion.h1
-            style={{ clipPath: 'circle(0% at 0% 0)' }}
+            style={{ clipPath: 'circle(100% at 0% 0)' }}
             data-speed="6"
             id='hero_line'
-            className={` relative landingAnimations scale-[90%] font-extralight tracking-wide textC mb-10 opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
+            className={` relative landingAnimations scale-[90%] font-extralight tracking-wide flex justify-center textC mb-10 opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
             initial={{ clipPath: 'circle(0% at 0% 0)', scale: 0.90,color:"#141414" }}
             animate={controlsHeader} // Using controlsHeader for animation
             transition={{ delay: 0.5, duration: 1, ease: "circInOut" }}
           >
-            <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span>
+            <AnimatedText exController={cueAnimations} text={`Storytellers for the Visionaries`} classP='text-8xl max-w-[40rem] font-Lora text-LunarTwilight font-extralight' />
+            {/* <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span> */}
           </motion.h1>
            
           </Parallax>

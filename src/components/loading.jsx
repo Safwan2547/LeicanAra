@@ -33,7 +33,7 @@ function LoadingScreen({ loadingTime }) {
           variants={presenceVariant}
           className='h-screen fixed bg-white z-50 w-screen flex justify-center items-center'
         >
-          <AnimatedText text="Begin the journey" className="text-8xl text-LunarDawn font-Lora" />
+          <AnimatedText text="Begin the journey" classP="text-8xl text-LunarDawn font-Lora" />
         </motion.div>
       )}
     </AnimatePresence>

@@ -34,7 +34,7 @@ function Introductory() {
       <motion.div  className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
       <Parallax easing={""} scale={[0.9,1]}  speed={10} className='' >
         
-          <AnimatedText className={'text-MainBeige  text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
+          <AnimatedText classP={'text-MainBeige  text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
        
        
         <div className='w-full flex justify-end items-center'>
