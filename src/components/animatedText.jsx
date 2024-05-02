@@ -1,12 +1,12 @@
 // AnimatedText.jsx
 "use client";
-import React,{useRef} from 'react';
+import React,{useRef,useState,useEffect} from 'react';
 import { motion, useInView } from 'framer-motion';
 
 
 const   letterAnimations = (charIndex,smallText) => ({
     hidden: {
-        opacity: 1, y: smallText ? 20 : 100, rotateX: "-90deg", skewX: "45deg", scale: 1, 
+        opacity: 0.5, y: smallText ? 20 : 100, rotateX: "-90deg", skewX: "45deg", scale: 1, 
 },
     visible: {
         opacity: 1,
@@ -22,6 +22,16 @@ const   letterAnimations = (charIndex,smallText) => ({
             mass: smallText? 0.7:1,
             delay: charIndex * 0.05
         }
+    },
+    fullAnimation:{
+        opacity: 0, y: smallText ? -20 : "-100vh", skewX: 0,
+        rotateX: 0,
+        transition: {
+            duration: 1,
+           ease:"circInOut",
+            delay: charIndex * 0.05
+        }
+
     }
 });
 
@@ -33,20 +43,38 @@ const wordVariants = {
     }
 };
 
-const AnimatedText = ({ text, classP, smallText, scrollRef,once,exController }) => {
+const AnimatedText = ({ text, classP, smallText, scrollRef,once,exController,fullAnimation }) => {
     const words = text.split(" ");
     const ref =useRef(null);
     smallText=smallText?smallText:false;
     const inView=useInView(ref,{once:once==false?false:true,threshold:0.5});
     const trigger = exController!=undefined?exController:inView;
 
+    const [animationState, setAnimationState] = useState('hidden');
 
+
+    // External control or inView might trigger animation change
+    useEffect(() => {
+        if (trigger) {
+            setAnimationState('visible');
+
+            // Delay before transitioning to fullAnimation
+            if(fullAnimation){
+            const timeout = setTimeout(() => {
+                setAnimationState('fullAnimation');
+            }, 1500); // Adjust this duration to control when fullAnimation starts
+                return () => clearTimeout(timeout);
+
+        }
+
+        }
+    }, [exController, inView]);
     return (
         <motion.div
             className={classP}
             ref={scrollRef ? scrollRef : ref}
             initial="hidden"
-            animate={trigger ? "visible" : "hidden"}
+            animate={animationState}
            
         >
             {words.map((word, index) => (

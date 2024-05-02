@@ -16,7 +16,7 @@ function LoadingScreen({ loadingTime }) {
   }, [loadingTime, setLoadState]);
 
   const presenceVariant = {
-    initial: { opacity: 0, scale: 0.95 },
+    initial: { opacity: 1, scale: 0.95 },
     animate: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
     exit: {
       opacity: 0, transition: { ease: "easeInOut", duration: 0.5 }
@@ -33,7 +33,7 @@ function LoadingScreen({ loadingTime }) {
           variants={presenceVariant}
           className='h-screen fixed bg-white z-50 w-screen flex justify-center items-center'
         >
-          <AnimatedText text="Begin the journey" classP="text-8xl text-LunarDawn font-Lora" />
+          <AnimatedText text="Begin the journey" fullAnimation={true} classP="text-8xl text-LunarDawn font-Lora" />
         </motion.div>
       )}
     </AnimatePresence>

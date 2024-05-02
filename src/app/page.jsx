@@ -39,7 +39,7 @@ function HomePage() {
     <ParallaxProvider>
       
 
-      <LoadingScreen loadingTime={loadingTime} loadState={loadState} setState={setloadState}  />
+      <LoadingScreen loadingTime={loadingTime} loadState={loadState} setState={setloadState} />
 
       
     <div 
