@@ -16,6 +16,7 @@ import React from "react";
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { LoaderProvider } from "@/components/loadStateContext";
+import { DeviceProvider } from "@/components/deviceProvider";
 
 
 export const metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       </Head>
+      <DeviceProvider>
       <LoaderProvider>
         <Cursor />
         <Navbar />  
@@ -55,6 +57,7 @@ export default function RootLayout({ children }) {
         </SmoothScroll>
         <Footer/>
         </LoaderProvider>
+        </DeviceProvider>
 
       </body>
     </html>

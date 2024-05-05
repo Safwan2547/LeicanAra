@@ -11,6 +11,7 @@ import  Link from 'next/link';
 import {useLenis} from '@studio-freight/react-lenis';
 import AboutCard from './aboutCard';
 import AnimatedText from './animatedText';
+import { useDeviceType } from './deviceProvider';
 
 const SubNavBar = (props) => {
     // Add your social media links here
@@ -31,7 +32,7 @@ const SubNavBar = (props) => {
 
 
     return (
-        <div className={`menu-item subnav-bar flex  ${visible?"opacity-100":"opacity-0" } transition-opacity duration-1000 absolute bottom-14 z-[1] justify-center gap-8`}>
+        <div className={`menu-item subnav-bar flex  ${visible?"opacity-100":"opacity-0" } hidden sm:flex transition-opacity duration-1000 absolute bottom-24 z-[1] justify-center gap-8`}>
             {socialMediaLinks.map((link, index) => (
                 <a key={index} href={link.url} className="subnav-link text-MainBeige buttonC font-satoshi-light hover:scale-110 duration-500 cursor-pointer hover:animate-pulse  text-lg transition-all"><AnimatedText text={link.name} smallText={true} once={false} /></a>
             ))}
@@ -51,6 +52,18 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     const customEase = cubicBezier(.08, .91, .45, 1);
     const lenis =useLenis();
     const [navOverlayHide, setNavOverlayHide] = useState("hidden");
+   
+    const [device, setDevice] = useState("desktop");
+    const isPhone = device === "phone";
+    const determineDeviceType = () => {
+        const { innerWidth } = window;
+        if (innerWidth <= 800) {
+            setDevice("phone");}
+        else{
+            setDevice("desktop");
+        }
+    }
+    
 
     const menuItems=[
         {label:'Who we are',url:'/about',name:'Info'},
@@ -59,8 +72,13 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     ]
 
     const navVariants = {
-        overlayOpen: { x: "0%", transition: { duration: 0.8, ease: customEase}},
-        overlayClose: { x: "100%", transition: { duration: 0.8, ease: "circInOut"} },
+        overlayOpen: {
+            x: isPhone?0:"5%", y: isPhone?"5%":0, transition: {
+                duration: 0.8, type: "spring",
+                stiffness:  45,
+                mass:  1,
+}},
+        overlayClose: { x: isPhone?0:"90%", y:isPhone?"90%":0 , transition: { duration: 0.8, ease: "circInOut"} },
         
     };
     const Background = {
@@ -145,7 +163,9 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     };
 
     useEffect(() => {
-    
+        determineDeviceType();
+        console.log(isPhone+ "isphone");
+
     if (navOpen) {
         controls.start(["overlayOpen"])
         controls.start(["childOpen"])
@@ -171,21 +191,21 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
     else if(!menuState){
         controls.start(["childOpen"])
     }
-}, [navOpen, controls,menuState]);
+}, [navOpen, controls,menuState,isPhone]);
 
     return (
-        <div>
-            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay ${navOverlayHide} backdrop-blur-sm bg-opacity-10 bg-NightFall  w-screen h-screen   top-0 left-0`}></motion.div>
+        <div id='navMenu' className=' sm:block'>
+            <motion.div animate={controls} variants={Background} className={`overlay-menu-overlay ${navOverlayHide} backdrop-blur-sm bg-opacity-10 bg-NightFall sm: w-screen h-screen   top-0 left-0`}></motion.div>
 
-        <motion.div initial={{x:"100%"}}
-        animate={controls} variants={navVariants} className={`overflow-hidden z-[13] overlay no-scrollbar::-webkit-scrollbar  text-center top-0 left-0 w-screen h-screen fixed  `}>
+        <motion.div initial={{}}
+        animate={controls} variants={navVariants} className={`overflow-hidden z-[13]  overlay no-scrollbar::-webkit-scrollbar  text-center top-0 left-0 w-screen h-screen fixed  `}>
                 <div onClick={() => toggleNav()} className='h-full w-full '></div>
             <motion.div className=' font-satoshi-light z-[14]'>
 
 
               
 
-                <div  data-speed="3" className='overlay-menu fixed overflow-hidden   w-[36rem] rounded-l-[1.5rem]  h-[90vh] right-0 top-[5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
+                <div  data-speed="3" className='overlay-menu fixed overflow-hidden w-[95vw]   sm:w-[36rem] rounded-t-[1.5rem] sm:rounded-tr-none sm:rounded-l-[1.5rem] right-1/2 translate-x-1/2 sm:translate-x-0  sm:h-[90vh] h-[90vh] sm:right-0 bottom-0 self-center sm:top-[5%] flex flex-col   justify-center items-center font-satoshi-light text-6xl  text-MainBeige'>
                    <div className={`h-full w-full backdrop-blur-md absolute  bg-LunarDawn transition-colors duration-700 bg-opacity-80`}></div>
                    
                     <motion.div  animate={controls} variants={childVarients(0)}  className='absolute flex flex-col justify-center items-center top-0 mt-12'>
@@ -204,7 +224,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
                                 <p className='font-satoshi-light text-sm p-2 opacity-20'>{item.label}</p>
                                 
                                     <div className={`${location === item.url ? 'opacity-20' : 'opacity-100'} buttonC transform ease-in-out overflow-hidden transition-button duration-700 hover:scale-110 w-[20rem] scale-[90%] hidden lg:block buttonC font-Lora cursor-pointer`}>
-                                    <Marquee speed={15} className='border-x border-x-white overflow-hidden border-opacity-[0.4]'><AnimatedText text={item.name} once={false} smallText={true} /></Marquee>
+                                    <Marquee speed={15} className='border-x sm:text-6xl text-7xl border-x-white overflow-hidden border-opacity-[0.4]'><AnimatedText text={item.name} once={false} smallText={true} /></Marquee>
                                     </div>
                                 
                             </motion.div>
@@ -214,6 +234,7 @@ const NavMenu = ({ navOpen, toggleNav,menuState,setMenuState }) => {
                    
                     <SubNavBar visible={!menuState} />
                 </div>
+
             </motion.div>
         </motion.div>
         </div>

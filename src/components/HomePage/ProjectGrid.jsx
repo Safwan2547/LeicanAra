@@ -33,7 +33,7 @@ const boxes = document.querySelectorAll(".projectCard")
   
   return (
     // Outer container with flex layout and centering
-    <section id='gridClassWrap' className="w-[100%] pt-48 flex justify-center  flex-col  items-center flex-wrap">
+    <section id='gridClassWrap' className="w-[100%] pt-48 bg-white flex justify-center  flex-col  items-center flex-wrap">
       <Parallax easing={"easeOutCirc"} opacity={[0,1]} speed={-3} scale={[0.7,1]} className='w-screen'> 
 
         <Marquee autoFill={true} speed={25} className='text-NightFall  fo font-Lora  text-3xl mb-24  h-[22rem] w-full  sm:text-[16rem]'>&nbsp; Projects &nbsp;
@@ -45,7 +45,7 @@ const boxes = document.querySelectorAll(".projectCard")
         </Marquee>
       </Parallax>
       {/* Grid container for projects with specified columns, gap, and border */}
-      <div id='projectHolder' className={` ${marginExpression2} sm:flex-col flex-row mt-24  relative flex overflow-x-scroll overflow-y-hidden 
+      <div id='projectHolder' className={` ${marginExpression2} sm:flex-col flex-row mt-24  relative flex overflow-hidden 
        gap-2 sm:gap-24 sm:p-0 pl-4 pr-4 w-screen sm:w-[95vw]  snap-mandatory snap-x   `}>
 
        
@@ -53,7 +53,7 @@ const boxes = document.querySelectorAll(".projectCard")
         
         {/* Map through the projects and render ProjectCard for each */}
         {projects.map((project) => (
-          <div id='projectCard' className={`projectCard  ${marginExpression3}  cursor-none flex-none h-1/3  transition-all duration-500   border-black snap-always snap-center `} key={project.key}>
+          <div id='projectCard' className={`projectCard  ${marginExpression3}  cursor-none flex-none h-1/3  transition-all duration-500   snap-always snap-center `} key={project.key}>
             <ProjectCard project={project} />
           </div>
         ))}

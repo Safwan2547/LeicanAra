@@ -5,6 +5,8 @@
   "dependencies": {
     "@react-spring/parallax": "^9.7.3",
     "@react-spring/web": "^9.7.3",
+    "@react-three/drei": "^9.105.6",
+    "@react-three/fiber": "^8.16.3",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.46",
     "@testing-library/jest-dom": "^5.16.5",
@@ -23,6 +25,7 @@
     "react-router-dom": "^6.11.2",
     "react-scroll-parallax": "^3.4.5",
     "react-sequence-animator": "^2.3.0",
+    "three": "^0.164.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -47,8 +47,8 @@ const AnimatedText = ({ text, classP, smallText, scrollRef,once,exController,ful
     const words = text.split(" ");
     const ref =useRef(null);
     smallText=smallText?smallText:false;
-    const inView=useInView(ref,{once:once==false?false:true,threshold:0.5});
-    const trigger = exController!=undefined?exController:inView;
+    const inView = useInView(ref, { once: once == false ? false : true, threshold: 0.5 });
+    const trigger = exController != undefined ? exController : inView;
 
     const [animationState, setAnimationState] = useState('hidden');
 
@@ -66,9 +66,10 @@ const AnimatedText = ({ text, classP, smallText, scrollRef,once,exController,ful
                 return () => clearTimeout(timeout);
 
         }
+       
 
         }
-    }, [exController, inView]);
+    }, [exController,trigger, inView]);
     return (
         <motion.div
             className={classP}

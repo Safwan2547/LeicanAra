@@ -14,6 +14,7 @@ import MouseParallax from '../components/mouseParallax';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import LoadingScreen from '@/components/loading';
 // import NavMenu from '../components/navMenu';
+import ModelViewer from '@/components/modelViewer';
 import PageTransition from '@/components/pageTransition';
 
 import { timeline } from 'motion';
@@ -52,10 +53,9 @@ function HomePage() {
             
             <LandingPage loadState={loadState} loadingTime={loadingTime}/>      
             <Introductory/>
-           
         <ProjectGrid  projects={projects} />
 
-        <TarotSection/>
+        {/* <TarotSection/> */}
 
         <CallToAction />
 

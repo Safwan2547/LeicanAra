@@ -4,9 +4,11 @@ import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLoader } from './loadStateContext';
 import AnimatedText from './AnimatedText'; // Import the new AnimatedText component
+import { useDeviceType } from './deviceProvider';
 
 function LoadingScreen({ loadingTime }) {
   const { loadState, setLoadState } = useLoader();
+  const {deviceType} = useDeviceType();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,7 +35,7 @@ function LoadingScreen({ loadingTime }) {
           variants={presenceVariant}
           className='h-screen fixed bg-white z-50 w-screen flex justify-center items-center'
         >
-          <AnimatedText text="Begin the journey" fullAnimation={true} classP="text-8xl text-LunarDawn font-Lora" />
+          <AnimatedText text="Begin the journey" fullAnimation={true} classP="text-7xl text-center sm:w-screen w-[75vw]  sm:text-8xl text-LunarDawn font-Lora" />
         </motion.div>
       )}
     </AnimatePresence>
