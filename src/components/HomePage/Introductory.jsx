@@ -32,13 +32,13 @@ function Introductory() {
   return (
     <section id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col py-48 mt-24 items-start">
       <motion.div  className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
-      <Parallax easing={""} scale={[0.9,1]}  speed={10} className='' >
+      <Parallax easing={""} scale={[0.9,1]}  speed={10} className='flex justify-around sm:justify-normal flex-col sm:flex-none' >
         
-          <AnimatedText once={false} classP={'text-MainBeige  text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
+          <AnimatedText once={false} classP={'text-MainBeige text-5xl sm:text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
        
        
         <div className='w-screen flex justify-end   items-center'>
-          <motion.p className='text-MainBeige  indent mb-24 max-w-[35rem]  pr-10 leading-normal text-right text-xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 1 }}
+          <motion.p className='text-MainBeige  indent mb-24 max-w-[35rem]  pr-10 leading-normal text-left sm:text-right text-xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 1 }}
             animate={{ opacity: isInView ? 1 : 1 }}
             transition={{ duration: 0.5 }}
           >

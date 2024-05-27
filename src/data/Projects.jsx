@@ -173,10 +173,10 @@ const projects = [
       title:'SVÄVA',
       mainHeader:'Skincare forever changed',
       type:'image',
-      thumbnail:"/svava placeholder.webp",
+      thumbnail:"/hydration serum  test 5.png",
       thumbnailPort:"/Container-Mockup.webp",
-      thumbnail3d:"/LeicanAra Project/VectorBraidedStar.svg",
-      thumbnail3dW:"w-2/3",
+      thumbnail3d:"/Asset 6.png",
+      thumbnail3dW:"w-12,border-2, h-12",
       projectLink: 'https://www.starfallstudios.com/',
       textColor:"text-[#21323e]",
       typeMobile:"image"

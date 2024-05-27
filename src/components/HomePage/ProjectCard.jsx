@@ -99,7 +99,7 @@ const ProjectCard = ({ project }) => {
         </Parallax>
         </div>
         {project.thumbnail3d !== null && project.thumbnail3d !== undefined && (
-          <div className='sm:flex hidden transition-all duration-1000  h-full w-full  justify-center absolute'>
+          <div className='sm:flex hidden transition-all duration-1000  h-full w-full items-center justify-center absolute'>
             <img data-speed="2" className={`${project.thumbnail3dW} z-3   mouseParallax left-50 top-50 `} src={project.thumbnail3d} />
           </div>
         )}
