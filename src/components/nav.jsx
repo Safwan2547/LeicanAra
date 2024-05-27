@@ -119,7 +119,7 @@ function Navbar() {
             className=" appearance-none  transition-color  ease-expo  justify-center fixed  w-screen mt-4 flex  sm:top-8 sm:mr-5  z-[3]"
         >
             <div onClick={() => toggleNav(false)} className=' text-LunarDawn z-[24]'>
-                <Link href="/" passHref className={` opacity-90 navItem antialiased transform transition-button duration-500 hover:scale-110 hover:text-LunarTwilight hover:animate-pulse-slow buttonC font-satoshi-light text-4xl sm:text-4xl ease-in-out cursor-none z-24`}>
+                <Link href="/" passHref className={` backdrop-invert opacity-90 navItem antialiased transform transition-button duration-500 hover:scale-110 hover:text-LunarTwilight hover:animate-pulse-slow buttonC font-satoshi-light text-4xl sm:text-4xl ease-in-out cursor-none z-24`}>
                     LeicanAra
                 </Link>
                 <span className={`textP text-3xl font-satoshi-light  transition-all duration-500`}>

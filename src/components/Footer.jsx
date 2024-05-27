@@ -22,7 +22,7 @@ function Footer() {
     <div className=' max-h-screen h-screen '>
     
       <footer className="relative  overflow-hidden  flex flex-col justify-center items-center h-full   bg-[#121b21] text-nightfall ">
-        <div id='top' className='grid  relative  grid-rows-1 grid-cols-3  h-full  w-full'>
+        <div id='top' className='grid  relative  grid-rows-1 grid-cols-3  h-full mt-12  w-full'>
     <div id='box1' className='w-full justify-center items-center flex h-full'>
 
 
@@ -40,7 +40,7 @@ function Footer() {
               </div>
               <div className='flex flex-col justify-center items-center space-y-4'>
                 <h4 className='font-satoshi-light text-MainBeige text-xl opacity-75'>Behance</h4>
-              <a className="z-[2] hover:scale-125 transition-all duration-500" href="https://www.behance.net/gallery/177745281/LeicanAra-A-Journey-Beyond-Design/modules/1003956415" target="_blank" className="z-[4]  hover:scale-[120%] transition-all duration-500 cursor-none">
+              <a className="z-[2] hover:scale-125 transition-all cursor-none duration-500" href="https://www.behance.net/gallery/177745281/LeicanAra-A-Journey-Beyond-Design/modules/1003956415" target="_blank" >
                 <svg xmlns="http://www.w3.org/2000/svg" fill='#ffffff' width="48" height="48" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 
           0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 
           2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444
@@ -51,7 +51,7 @@ function Footer() {
             </div>
 
     </div>
-      <div id='box2' className=' w-full h-full flex  justify-center items-center '>
+      <div id='box2' className=' w-full  flex  justify-center items-center '>
             <div className='flex justify-center w-full h-full  absolute    object-contain items-center'>
               <img src="/LeicanAra Project/VectorBraidedStar.svg" alt="Braided Star" className='  h-[300rem]  mx-auto'/> 
             </div>
@@ -71,7 +71,7 @@ function Footer() {
     
   
         </div>
-      <div id='bottom' className='flex justify-end  bottom-0 flex-col' >
+      <div id='bottom' className='flex justify-center items-center  mb-4  flex-col' >
           <div className='flex bg-[#121b21] text-white justify-center'>
             <h1 className=' font-satoshi-light  opacity-[75%] text-xl'>Words that define us</h1>
           </div>
