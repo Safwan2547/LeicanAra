@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, useAnimationControls, cubicBezier, stagger } from 'framer-motion';
 import Image from 'next/image';
 import AnimatedText from './animatedText';
+import Marquee from 'react-fast-marquee';
 
 
 
@@ -59,25 +60,28 @@ function AboutCard(props){
 
     return (
      
-        <motion.div className = "w-full h-full absolute flex flex-col justify-start text-satoshi-light bg-MainBeige text-NightFall items-start p-12  z-14 "
+        <motion.div className = "w-full h-full absolute flex flex-col justify-start items-start font-satoshi-light bg-MainBeige text-NightFall   z-14 "
     initial = "hidden"
     animate = { menuState? "visible": "hidden" }
     variants = { aboutCardVariants }
 
         >
-            <div className='w-full h-[75px]flex justify-center items-center'>
-            <motion.div animate={controls} variants={childVarient(2)} className='  flex flex-col justify-center items-center top-0 '>
+            {/* <Marquee speed={12} className=' border-b-2 border-LunarDawn border-opacity-40 absolute top-[2%] font-Lora font-light text-7xl '>This is who we are: &nbsp;&nbsp;</Marquee> */}
+
+            <div className='ml-12  h-full flex flex-col z-[6]  justify-evenly k  items-center  w-[25vw]'>
+            {/* <div className='w-32 flex justify-center items-center'>
+            <motion.div animate={controls} variants={childVarient(2)} className='  flex flex-col justify-start items-start ml-12 top-0 '>
                 <motion.div animate={controls} variants={floatVarient} >
                     <Image className=' text-LunarTwilight' src={menuMoon} alt="Menu Star"  width={50} height={50} />
 
                 </motion.div>
-                {/* <h1 className='text-sm opacity-50 text-MainBeige mt-8 font-satoshi-light'>Strings</h1> */}
+                {/* <h1 className='text-sm opacity-50 text-MainBeige mt-8 font-satoshi-light'>Strings</h1> 
 
             </motion.div >
-            </div>
+            </div> */}
             <div className='h-[80%] w-full flex justify-center items-start flex-col'>
         <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className='flex flex-col mt-12 text-start justify-start  w-1/2'>
-                    <AnimatedText  classP={'text-6xl justify-center items-center flex text-center leading-normal'} smallText={true} once={false} text="About" />
+                    <AnimatedText  classP={'text-6xl justify-start items-center flex text-start leading-normal'} smallText={true} once={false} text="About" />
         </motion.div>
             <motion.div initial={"childClose"} animate={controls} variants={childVarient(1)} className=' mt-4 max-w-[80%] text-start '>
                 <h2 className='text-2xl  pl-2 leading-normal'>LeicanAra is a design studio that stands out for its innovative approach to eradicating market invisibility for ambitious businesses. </h2>
@@ -100,6 +104,7 @@ function AboutCard(props){
 
                 </ul>
             </motion.div>
+            </div>
             </div>
         </motion.div >
     )

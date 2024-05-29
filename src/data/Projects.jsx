@@ -173,7 +173,7 @@ const projects = [
       title:'SVÄVA',
       mainHeader:'Skincare forever changed',
       type:'image',
-      thumbnail:"/hydration serum  test 5.png",
+      thumbnail:"/svavaPlaceHolder.png",
       thumbnailPort:"/Container-Mockup.webp",
       thumbnail3d:"/Asset 6.png",
       thumbnail3dW:"w-12,border-2, h-12",
