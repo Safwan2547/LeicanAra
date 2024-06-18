@@ -25,7 +25,7 @@ function Footer() {
   ];  
   return (
     <div className=' max-h-screen h-screen relative z-[1] '>
-      <GradientBackground blobCount={4}  style={{ zIndex: 2 }} className={`w-screen h-screen absolute `} colors={gradientColors} bg='#121b21' />
+      <GradientBackground blobCount={3}  style={{ zIndex: 2 }} className={`w-screen h-screen absolute `} colors={gradientColors} bg='#121b21' />
 
       <footer className="relative  overflow-hidden  flex flex-col justify-center z-[4] items-center h-full    text-nightfall ">
 
