@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLenis } from '@studio-freight/react-lenis';
+import GradientBackground from './gradientBg';
 
 
 
@@ -17,13 +18,20 @@ function Footer() {
       duration: 3.5 // Duration of the scroll animation in seconds
     });
   };
-  
+  const gradientColors = [
+    ['#2a4050', '#121b21'],
+    ['#121b21', '#2a4050'],
+    // Add more gradient color arrays as needed
+  ];  
   return (
-    <div className=' max-h-screen h-screen '>
-    
-      <footer className="relative  overflow-hidden  flex flex-col justify-center items-center h-full   bg-[#121b21] text-nightfall ">
+    <div className=' max-h-screen h-screen relative z-[1] '>
+      <GradientBackground blobCount={4}  style={{ zIndex: 2 }} className={`w-screen h-screen absolute `} colors={gradientColors} bg='#121b21' />
+
+      <footer className="relative  overflow-hidden  flex flex-col justify-center z-[4] items-center h-full    text-nightfall ">
+
         <div id='top' className='grid  relative  grid-rows-1 grid-cols-3  h-full mt-12  w-full'>
     <div id='box1' className='w-full justify-center items-center flex h-full'>
+
 
 
             {/* Footer icons */}
@@ -72,17 +80,20 @@ function Footer() {
   
         </div>
       <div id='bottom' className='flex justify-center items-center  mb-4  flex-col' >
-          <div className='flex bg-[#121b21] text-white justify-center'>
+          <div className='flex  text-white justify-center'>
             <h1 className=' font-satoshi-light  opacity-[75%] text-xl'>Words that define us</h1>
           </div>
-      <Marquee autoFill={true} speed={25} className={`pb-4  bg-[#121b21]  text-MainBeige  duration-1000
+      <Marquee autoFill={true} speed={25} className={`pb-4    text-MainBeige  duration-1000
         transition-all font-satoshi-light  text-5xl sm:text-9xl `}> Visionary | Soul | Storytelling | Visibility | Timeless | Human | Forward | Ambition | Heritage | Inspire | Evoke | Elevate | Scuplt | Minimal |&nbsp;</Marquee>
       
-      <div className='text-MainBeige p-4 sm:text-center sm:text-sm  bg-[#121b21] items-center justify-center text-center sm:flex'>
+      <div className='text-MainBeige p-4 sm:text-center sm:text-sm   items-center justify-center text-center sm:flex'>
         <p className='w-2/3 textP opacity-[75%] sm:w-full' >Designed and Developed by LeicanAra <br />All Rights Reserved</p>
       </div>
         </div>
+
       </footer>
+      
+
       </div>
   );
 }

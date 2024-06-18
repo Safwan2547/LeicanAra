@@ -80,12 +80,12 @@ const AnimatedText = ({ text, classP, smallText, scrollRef,once,exController,ful
         >
             {words.map((word, index) => (
                 <motion.span key={index} style={{ whiteSpace: 'nowrap' }}
-                    variants={wordVariants}  className=' justify-center relative    text-center inline-flex '
+                    variants={wordVariants}  className=' justify-center relative textC   text-center inline-flex '
                 >
                     
                     {Array.from(word).map((char, charIndex) => (
                         <motion.span key={charIndex}
-                            className='relative  text-center '
+                            className='relative  text-center textC '
                             variants={letterAnimations(charIndex,smallText)}
                         >
                             {char}

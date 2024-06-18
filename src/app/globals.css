@@ -90,3 +90,10 @@ body {
   .lenis.lenis-scrolling iframe {
     pointer-events: none;
   }
+    .grainy-overlay {
+      background-image: url('/grain-1.png');
+      background-size: cover;
+      opacity: 1;
+      color:white;
+      z-index: 2;
+    }

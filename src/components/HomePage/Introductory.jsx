@@ -3,6 +3,7 @@ import { motion, useScroll,useInView } from 'framer-motion';
 import { Parallax,ParallaxBanner } from 'react-scroll-parallax';
 import Image from 'next/image';
 import AnimatedText from '../animatedText';
+import GradientBackground from '../gradientBg';
 
 // Ensure all used components and hooks are correctly imported
 function Introductory() {
@@ -30,15 +31,21 @@ function Introductory() {
 
 
   return (
-    <section id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col py-48 mt-24 items-start">
+    <div>
+
+    <section 
+    id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col py-48 mt-24 items-start">
+      
+        <GradientBackground blobCount={2} style={{ zIndex: 1 }} className={`w-screen h-screen absolute `} colors={[['#efece3', '#141414'], ['#141414', '#efece3']]} bg='#141414' />
+    <div className='z-[2]'>
       <motion.div  className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
-      <Parallax easing={""} scale={[0.9,1]}  speed={10} className='flex justify-around sm:justify-normal flex-col sm:flex-none' >
+      <Parallax easing={""} scale={[0.9,1]}  speed={10} className='flex justify-around   sm:justify-normal flex-col sm:flex-none' >
         
-          <AnimatedText once={false} classP={'text-MainBeige text-5xl sm:text-[15rem] font-Lora font-bold'} text="We Create Evocative Brands"/>
+          <AnimatedText once={false} classP={'text-MainBeige text-5xl sm:text-[15rem]    font-Lora font-bold'} text="We Create Evocative Brands"/>
        
        
         <div className='w-screen flex justify-end   items-center'>
-          <motion.p className='text-MainBeige  indent mb-24 max-w-[35rem]  pr-10 leading-normal text-left sm:text-right text-xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 1 }}
+          <motion.p className='text-MainBeige  indent mb-24 max-w-[35rem] textP  pr-10 leading-normal text-left sm:text-right text-xl overflow-clip opacity-80 font-satoshi-light ' initial={{ opacity: 1 }}
             animate={{ opacity: isInView ? 1 : 1 }}
             transition={{ duration: 0.5 }}
           >
@@ -60,16 +67,16 @@ function Introductory() {
         
       </motion.div>
       
-      <div className='w-full  p-12  firstChild flex justify-center items-start relative'>
-        <div className='flex flex-col'>
-        <motion.h1 className='text-MainBeige  text-3xl font-satoshi-light' initial={{ opacity: 0 }}
+      <div className='w-full  p-12  firstChild flex justify-center items-center relative'>
+        <div className='flex  flex-col'>
+        <motion.h1 className='text-MainBeige   text-3xl font-satoshi-light' initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 1 }}
           transition={{ duration: 1 }}
 
         >
           The mission:
         </motion.h1>
-          <h1 className=' textC font-Lora self-center text-[10rem] max-h-[160vh]  leading-[14rem] text-MainBeige max-w-[45rem] ' > To get eyes on your brand.</h1>
+          <h1 className=' textC font-Lora self-center text-[10rem] max-h-[160vh]    leading-[14rem] text-MainBeige max-w-[35rem] ' ><span className='text-6xl'> To get</span> eyes <span className='text-6xl'>on your </span>  brand.</h1>
 
         </div>
         
@@ -88,8 +95,10 @@ function Introductory() {
           />
     </div>
     </div>
-
+        </div>
     </section>
+
+    </div>
   );
 }
 

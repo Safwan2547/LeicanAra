@@ -79,7 +79,7 @@ function LandingPage(props) {
             autoPlay={true}
             ref={videoRef}
             transition={{ duration: 3, ease: "circInOut" }}
-            src={'/landingVid3.mov'}
+              src={'/0001-0480.mov'}
             type="video/mp4"
             style={{ outline: 'none' }}
           />
@@ -94,10 +94,10 @@ function LandingPage(props) {
           <motion.h1
             data-speed="6"
             id='hero_line'
-            className={` relative landingAnimations font-extralight tracking-wide flex items-center  p-4 max-w-1/3 w-[50vw] sm:w-[50vw]  sm:max-w-1/2 justify-center textC opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
+              className={` relative landingAnimations font-extralight tracking-wide flex items-center  p-4 max-w-1/3  w-[50vw] sm:w-[60vw] textC sm: justify-center textC opacity-100 landingItem1 group text-NightFall font-Lora sm:text-5xl text-center leading-none`}
             transition={{ delay: 0.5, duration: 1, ease: "circInOut" }}
           >
-            <AnimatedText exController={cueAnimations} text={`Storytellers for the Visionaries`} classP='text-5xl sm:max-w-1/2  sm:text-8xl max-w-[40rem] font-Lora text-LunarDawn font-extralight' />
+            <AnimatedText exController={cueAnimations} text={`Storytellers for the Visionaries`} classP='text-5xl sm:max-w-[75vw] textC sm:text-8xl max-w-[40rem] font-Lora text-LunarDawn font-extralight' />
             {/* <span className='textC opacity-100 font-normal text-LunarTwilight text-8xl'>Storytellers</span> <span className='opacity-100'>for</span> <br /><span className='opacity-100'>the</span> <span className='textC font-normal opacity-100 text-8xl text-LunarTwilight '>Visionaries</span> */}
           </motion.h1>
            
