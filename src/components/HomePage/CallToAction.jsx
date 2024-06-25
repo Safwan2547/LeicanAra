@@ -3,6 +3,7 @@ import {animate,motion, useInView,useAnimation } from "framer-motion";
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 import AnimatedText from "../animatedText";
+import Spline from "@splinetool/react-spline";
 
 function CallToAction() {
 
@@ -62,13 +63,17 @@ function CallToAction() {
 
   return (
     <div className="border-black  border-0 border-solid flex justify-center items-center h-[120vh] w-[100%]">
+      
       <div id="cta" className="pt-10  text-NightFall w-[95%] flex flex-wrap flex-col items-center sm:items-center justify-center align-top">
        
         <h1 className="text-4xl sm:text-8xl textC font-Lora  max-w-[75%] leading-loose opacity-1 text-NightFall z-[2] text-center">
           Ready to turn your ideas into art?
         </h1>
-        <Parallax speed={-15} >
-        <Image src="/ArrowIconCTA.png" className="m-12" alt="Call to Action" width={200} height={200} />
+        <Parallax speed={-10} >
+          <div className='h-1/2 w-[55vw]'>
+            <Spline className='border-2 border-white overflow-clip  ' scene='https://prod.spline.design/BSSTi8vZW3yZhSUM/scene.splinecode'></Spline>
+          </div>
+        {/* <Image src="/ArrowIconCTA.png" className="m-12" alt="Call to Action" width={200} height={200} /> */}
         </Parallax>
         <motion.div onHoverStart={() => setHover(true)}
           onHoverEnd={() => setHover(false)}
