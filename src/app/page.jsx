@@ -20,6 +20,7 @@ import PageTransition from '@/components/pageTransition';
 import { timeline } from 'motion';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import TarotSection from '@/components/HomePage/TarotSection';
+import Eyes from '@/components/HomePage/Eyes';
 
 function HomePage() {
 
@@ -53,6 +54,7 @@ function HomePage() {
             
             <LandingPage loadState={loadState} loadingTime={loadingTime}/>      
             <Introductory/>
+            <Eyes/>
         <ProjectGrid  projects={projects} />
 
         {/* <TarotSection/> */}

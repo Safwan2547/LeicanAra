@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState,useRef,useCallback } from 'react';
-import { motion,spring,useSpring,useMotionValue } from 'framer-motion';
+import { motion,spring,useSpring,useMotionValue, useInertia } from 'framer-motion';
 
 
 
@@ -15,11 +15,20 @@ function Cursor() {
     y:useMotionValue(-100)
 
   }
+  
   const smoothOptions={
-    stiffness: 500,
-    damping: 30,
-    mass:0.01,
+    stiffness: 200,
+    damping: 25,
+  
   }
+  const inertiaOptions = {
+    type: "inertia",
+    bounceStiffness: 200,
+    bounceDamping: 10,
+    power: 0.5,
+    timeConstant: 100,
+  };
+
   const smoothMouse={
     x:useSpring(mouse.x,smoothOptions),
     y:useSpring(mouse.y,smoothOptions)
@@ -28,10 +37,13 @@ function Cursor() {
     const {clientX,clientY}=e;
     mouse.x.set(clientX-cursorSize/2);
     mouse.y.set(clientY-cursorSize/2);
-  })
+  },[mouse.x,mouse.y])
 
 
   const cursorRef = useRef(null);
+  const trailingMouse = useRef({ x: -100, y: -100 });
+  const mouseVelocity = 0.065;
+
 
 
   useEffect(() => {
@@ -47,6 +59,16 @@ function Cursor() {
       else if (className.includes('imageFloater')) setHovering('imageFloater');
       else setHovering(null);
     };
+    const updateCursor = () => {
+      trailingMouse.current.x += (mouse.x.get() - trailingMouse.current.x) * mouseVelocity;
+      trailingMouse.current.y += (mouse.y.get() - trailingMouse.current.y) * mouseVelocity;
+
+      cursorRef.current.style.transform = `translate3d(${trailingMouse.current.x}px, ${trailingMouse.current.y}px, 0)`;
+
+      requestAnimationFrame(updateCursor);
+    };
+
+    requestAnimationFrame(updateCursor);
 
     document.addEventListener('mousemove', manageMoveMouse);
     document.addEventListener('mouseover', handleMouseOver);
@@ -55,7 +77,7 @@ function Cursor() {
       document.removeEventListener('mousemove', manageMoveMouse);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, [manageMoveMouse]);
 
   
   
@@ -122,8 +144,7 @@ function Cursor() {
       className={`${getCursorClass()} !opacity-100 transition-cursor hidden sm:block !duration-300 bg-LunarTwilight fixed rounded-full z-50`}
       style={{
         pointerEvents: "none",
-        left: smoothMouse.x,
-        top: smoothMouse.y,
+      
      
       }}
       

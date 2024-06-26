@@ -68,34 +68,7 @@ function Introductory() {
         
       </motion.div>
       
-      <div className='w-full  p-12  firstChild flex justify-center items-center relative'>
-        <div className='flex  flex-col'>
-        <motion.h1 className='text-MainBeige   text-3xl font-satoshi-light' initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 1 }}
-          transition={{ duration: 1 }}
-
-        >
-          The mission:
-        </motion.h1>
-          <h1 className=' textC font-Lora self-center text-[10rem] max-h-[160vh]    leading-[14rem] text-MainBeige max-w-[35rem] ' ><span className='text-6xl'> To get</span> eyes <span className='text-6xl'>on your </span>  brand.</h1>
-
-        </div>
-        
-        <div className=' flex flex-col justify-center items-center h-2/3 gap-12 max-h-[150vh]  w-[80%] '>
-          <ParallaxBanner
-            layers={[{ image: '/LeicanAra-eyes1.jpg', translateX: [0, 10], scale: [0.9, 1], speed: -5 }]}
-            className=" aspect-[3/1] mt-12"
-          />
-          <ParallaxBanner
-            layers={[{ image: '/leicanAra-eyes2.jpg',  translateX: [0, 10], scale: [0.9, 1], speed: -10 }]}
-            className=" aspect-[3/1] -scale-x-100 mt-12 "
-          />
-          <ParallaxBanner
-          layers={[{ image: '/LeicanAra-eyes3.jpg',translateX:[0,10], scale:[0.9,1], speed: -15 }]}
-            className=" aspect-[3/1] mt-12"
-          />
-    </div>
-    </div>
+      
     
         </div>
 
