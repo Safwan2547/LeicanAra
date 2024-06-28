@@ -1,73 +1,32 @@
-import Image from 'next/image';
-import { useScroll, useTransform, motion, useInView,useAnimation } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import { Parallax } from 'react-scroll-parallax';
-import { Capabilities_Data } from '@/data/Capabilities';
-import SmoothScroll from '../smoothScroll';
+import React from "react";
+import Spline from "@splinetool/react-spline";
 
-const Card = ({ title, description, src, url, color, i, progress, range, targetScale }) => {
-    const scale = useTransform(progress, range, [1, targetScale]);
-    const container = useRef(null);
-    const ref = useRef(null);
-    const isInView = useInView(ref,{
-        once: true, // animation triggers only once
-        threshold: 0.1 // at least 50% of the element must be visible
-    });
-
-    const { scrollYProgress } = useScroll({
-        target: container.current,
-        offset: ["start end", "start start"],
-  
-    });
-
-    const cardAnimation=useAnimation();
-
-    // useInView hook to track if the card is in view
- 
-
-    useEffect(() => {
-        if (isInView) {
-            cardAnimation.start({ clipPath: ["circle(0% at 0% 0)", "circle(150% at 0% 0)"],transition:{duration:1,ease:"anticipate"} });
-        }
-    },[cardAnimation,isInView])
-
-    const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
+function CapabilityCards({ cardVarient }) {
     return (
-        <div ref={container} style={{scale:scale,top: `calc(5vh + ${i * 120}px)` }} className="h-full flex border-2 border-black items-center justify-center  sticky  ">
-
-            <motion.div
-                ref={ref} // attaching the ref to the motion.div
-                className="flex flex-col justify-center items-center relative h-[50vw] w-[90vw] "
-                style={{ backgroundColor:color,scale:scale }}
-               animate={cardAnimation}
-            >
-                <div className='h-[30%] items-center border-2 border-green-500 w-full flex pt-5 flex-col'>
-
-                <h1 className='text-9xl  z-[3] text-#808080 font-satoshi-normal'>{title}</h1>
+        <div className="CardContainer grid text-NightFall grid-cols-2 grid-rows-3 mx-24 p-2 h-[42rem] border-[1px] border-opacity-75 rounded-xl border-NightFall bg-">
+            <div className="CardHeader w-full h-full grid grid-cols-2 col-span-2 row-span-1">
+                <div className="mt-2">
+                    <h1 className="mx-4 font-satoshi-light text-2xl">{cardVarient.cardNumber}</h1>
+                    <h1 className="mx-12 font-satoshi-light text-9xl textC justify-center">{cardVarient.cardName}</h1>
                 </div>
-               
-                <div className="flex h-full gap-48">
-                
-                    <div className="w-[40%] flex justify-center items-center relative  ">
-                        
-                        <p className='text-xl font-satoshi-light'>{description}</p>
-
-                    </div>
-
-                    
-                        <div style={{ scale: imageScale }} className="w-full object-fit h-full">
-                            <Image
-                                height={1000}
-                                width={500}
-                                src={`/${src}`}
-                                alt="image"
-                            />
+                <div className="flex justify-end gap-2  items-end w-1/2 flex-row flex-wrap  tags">
+                    {cardVarient.cardTags.map((tag, index) => (
+                        <div key={index} className="bg-LunarDark textP text-md p-2 inline-flex justify-center font-satoshi-light items-center rounded-xl">
+                            <h3 className="textP text-MainBeige">{tag}</h3>
                         </div>
+                    ))}
                 </div>
-            </motion.div>
+            </div>
+            <div className="bottomRow col-span-2 grid grid-cols-3 w-full h-full row-span-2">
+                <div className="CardModel w-full h-full col-span-1">
+                    <Spline className=" z-[3]" scene={cardVarient.modelLink}></Spline>
+                </div>
+                <div className="flex justify-end items-end col-span-2 p-12">
+                    <h2 className="font-satoshi-light textP text-3xl">{cardVarient.cardDescription}</h2>
+                </div>
+            </div>
         </div>
-    )
+    );
 }
 
-export default Card;
+export default CapabilityCards;

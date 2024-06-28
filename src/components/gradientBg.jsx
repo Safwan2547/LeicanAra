@@ -1,6 +1,7 @@
 // components/GradientBackground.js
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 const GradientBackground = ({ colors, bg, blobCount }) => {
     // Create an array with the length of blobCount to map over
@@ -17,6 +18,15 @@ const GradientBackground = ({ colors, bg, blobCount }) => {
 
     return (
         <div className="w-full  h-full absolute overflow-hidden" style={{ backgroundColor: bg }}>
+            <div
+                className="absolute top-0 left-0 w-full h-full"
+                style={{
+                    backgroundImage: `url('/grain-1.png')`,
+                    backgroundRepeat: 'repeat',
+                    backgroundSize: 'cover', // or 'contain', depending on your preference
+                    mixBlendMode: 'plus-lighter', // This can be applied if needed
+                }}
+            />
             {blobs.map((blob, index) => (
                 <motion.div
                     key={index}

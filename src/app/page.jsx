@@ -7,9 +7,9 @@ import ProjectGrid from '../components/HomePage/ProjectGrid';
 import projects from '../data/Projects';
 
 import CallToAction from '../components/HomePage/CallToAction';
-import Capabilities from '../components/HomePage/Capabilities';
+import Capabilities from '../components/HomePage/CapabilitiesSection';
+
 import Introductory from '../components/HomePage/Introductory';
-import Footer from '@/components/Footer';
 import MouseParallax from '../components/mouseParallax';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import LoadingScreen from '@/components/loading';
@@ -57,7 +57,7 @@ function HomePage() {
             <Eyes/>
         <ProjectGrid  projects={projects} />
 
-        {/* <TarotSection/> */}
+        <Capabilities/>
 
         <CallToAction />
 

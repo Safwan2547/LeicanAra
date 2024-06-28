@@ -26,7 +26,9 @@ module.exports = {
       customTeal: '#003847',
       LunarTwilight:"#2f4858",
       LunarDawn:"#21323e",
+      LunarDark:"#121b21",
       NightFall:"#141414",
+
       customTealAlpha:"#00384780",
       customBurgandy: '#470F00',
 
