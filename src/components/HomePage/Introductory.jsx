@@ -35,9 +35,9 @@ function Introductory() {
     <div>
 
     <section 
-    id="Introductory" className="relative bg-NightFall z-4 overflow-clip flex flex-col justify-center  items-start">
+    id="Introductory" className="relative bg-LunarDark z-4 overflow-clip flex flex-col justify-center  items-start">
       
-        <GradientBackground blobCount={3} style={{ zIndex: 1 }} className={`w-screen  h-screen absolute `} colors={[['#242424', '#141414'], ['#141414', '#242424']]} bg='#141414' />
+        {/* <GradientBackground blobCount={3} style={{ zIndex: 1 }} className={`w-screen  h-screen absolute `} colors={[['#242424', '#141414'], ['#141414', '#242424']]} bg='LunarDark' /> */}
         <div className='z-[2] ml-4 flex flex-col justify-center  mt-24 items-start'>
       <motion.div  className="break-words  mb-48  leading-[0.9] w-[90vw] align-baseline flex flex-col z-3">
       <Parallax easing={""} scale={[0.9,1]}  speed={10} className='flex justify-around   sm:justify-normal flex-col sm:flex-none' >

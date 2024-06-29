@@ -70,10 +70,10 @@ function CallToAction() {
           Ready to turn your ideas into art?
         </h1>
         <Parallax speed={-10} >
-          <div className='h-1/2 w-[55vw]'>
+          {/* <div className='h-1/2 w-[55vw]'>
             <Spline className='border-2 border-white overflow-clip  ' scene='https://prod.spline.design/7roEmsE19PdW6IpP/scene.splinecode'></Spline>
-          </div>
-        {/* <Image src="/ArrowIconCTA.png" className="m-12" alt="Call to Action" width={200} height={200} /> */}
+          </div> */}
+        <Image src="/ArrowIconCTA.png" className="m-12" alt="Call to Action" width={200} height={200} />
         </Parallax>
         <motion.div onHoverStart={() => setHover(true)}
           onHoverEnd={() => setHover(false)}
